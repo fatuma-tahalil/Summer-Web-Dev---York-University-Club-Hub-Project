@@ -1,0 +1,141 @@
+/* ============================================================
+   York University Club Finder — Main Stylesheet
+   ============================================================ */
+
+/* --- Reset & Base ------------------------------------------ */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* --- Header ------------------------------------------------ */
+.top-header-line {
+    background-color: crimson;
+    height: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.middle-header-line {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    box-sizing: border-box;
+}
+
+.bottom-header-line {
+    background-color: crimson;
+    height: 20px;
+    width: 100%;
+    display: flex;
+}
+
+/* --- Logo & Site Title ------------------------------------- */
+.logo {
+    height: 45px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: black;
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* --- Navigation -------------------------------------------- */
+.navBoxes {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 15px;
+}
+
+.navBoxes a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid crimson;
+    padding: 6px 12px;
+    margin-left: 10px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.navBoxes a:hover {
+    background-color: crimson;
+    color: white;
+}
+
+/* --- Hero Section (Index.html only) ----------------------- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(157, 0, 30, 0.85) 0%,
+        rgba(20, 20, 40, 0.92) 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    padding: 0 24px;
+}
+
+.hero-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 16px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 36px;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: crimson;
+    border: 2px solid #ffffff;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.hero-btn:hover {
+    background-color: transparent;
+    border-color: #ffffff;
+    color: #ffffff;
+}
