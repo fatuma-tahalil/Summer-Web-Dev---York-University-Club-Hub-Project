@@ -286,3 +286,156 @@ body {
     background-color: #a00020 !important;
     color: #ffffff !important;
 }
+
+/* ============================================================
+   About Us Page
+   ============================================================ */
+
+/* --- About Hero -------------------------------------------- */
+.about-hero {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background-color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(157, 0, 30, 0.82) 0%,
+        rgba(20, 20, 40, 0.92) 100%
+    );
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 24px;
+}
+
+.about-hero-content h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #ffffff;
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+.about-hero-content p {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin: 0;
+}
+
+/* --- Shared layout ----------------------------------------- */
+.about-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-heading {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.6rem;
+    color: #111111;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid crimson;
+    display: inline-block;
+}
+
+.section-text {
+    font-size: 1rem;
+    color: #444444;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* --- Overview section -------------------------------------- */
+.about-overview {
+    padding: 56px 0 40px;
+    background-color: #ffffff;
+}
+
+/* --- Team section ------------------------------------------ */
+.about-team {
+    padding: 48px 0 64px;
+    background-color: #f7f7f7;
+}
+
+.about-team .section-text {
+    margin-bottom: 40px;
+}
+
+/* --- Team grid --------------------------------------------- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 8px;
+}
+
+/* --- Team card --------------------------------------------- */
+.team-card {
+    background: #ffffff;
+    border-top: 4px solid crimson;
+    padding: 28px 20px 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.team-card:hover {
+    box-shadow: 0 6px 24px rgba(157, 0, 30, 0.15);
+    transform: translateY(-3px);
+}
+
+.team-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: crimson;
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    letter-spacing: 1px;
+}
+
+.team-name {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.05rem;
+    color: #111111;
+    margin: 0 0 8px;
+    font-weight: 700;
+}
+
+.team-id {
+    display: block;
+    font-size: 0.78rem;
+    color: #888888;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
+
+.team-email {
+    display: inline-block;
+    font-size: 0.82rem;
+    color: crimson;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.team-email:hover {
+    text-decoration: underline;
+}
