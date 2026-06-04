@@ -139,3 +139,150 @@ body {
     border-color: #ffffff;
     color: #ffffff;
 }
+
+/* --- Login Page -------------------------------------------- */
+.login-page {
+    position: relative;
+    min-height: calc(100vh - 60px);
+    background-color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+    box-sizing: border-box;
+}
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        160deg,
+        rgba(157, 0, 30, 0.80) 0%,
+        rgba(20, 20, 40, 0.92) 100%
+    );
+}
+
+.login-card {
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    border-top: 5px solid crimson;
+    width: 100%;
+    max-width: 420px;
+    padding: 40px 36px 32px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+.login-logo {
+    height: 52px;
+    margin-bottom: 12px;
+}
+
+.login-heading {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 6px;
+}
+
+.login-sub {
+    font-size: 0.9rem;
+    color: #555555;
+    margin: 0 0 28px;
+    line-height: 1.5;
+}
+
+/* --- Form -------------------------------------------------- */
+.login-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    border: 2px solid #cccccc;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    border-color: crimson;
+}
+
+/* --- Sign In Button (matches screenshot) ------------------- */
+.signin-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px;
+    background-color: crimson;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s;
+}
+
+.signin-btn:hover {
+    background-color: #a00020;
+}
+
+/* --- Error message ----------------------------------------- */
+.login-error {
+    color: crimson;
+    font-size: 0.85rem;
+    margin: 10px 0 0;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+/* --- Help link --------------------------------------------- */
+.login-help {
+    font-size: 0.8rem;
+    color: #777777;
+    margin: 24px 0 0;
+    text-align: center;
+}
+
+.login-help a {
+    color: crimson;
+    text-decoration: none;
+}
+
+.login-help a:hover {
+    text-decoration: underline;
+}
+
+/* --- Sign In nav link (filled pill style) ------------------ */
+.nav-signin {
+    background-color: crimson !important;
+    color: #ffffff !important;
+    border-color: crimson !important;
+}
+
+.nav-signin:hover {
+    background-color: #a00020 !important;
+    color: #ffffff !important;
+}
