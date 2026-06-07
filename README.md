@@ -19,4 +19,4 @@
 - Contact Us
 - Sign In
 
-**GitHub Pages Link:** To be added
+**GitHub Pages Link:** https://fatuma-tahalil.github.io/Summer-Web-Dev---York-University-Club-Hub-Project/
