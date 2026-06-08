@@ -6,83 +6,63 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <div class="top-header-line"></div>
-
-    <div class="middle-header-line">
-        <div class="header-content">
-            <img src="assets/york-logo.png" class="logo" alt="York University Logo">
-            <div class="title">Club Finder</div>
-        </div>
-        <div class="navBoxes">
+    <header>
+        <p>
+            <img src="assets/york-logo.png" alt="York University Logo">
+            Club Finder
+        </p>
+        <nav aria-label="Primary">
             <a href="index.html">Home</a>
             <a href="clubs.html">Explore Clubs</a>
             <a href="club_events.html">Club Events</a>
             <a href="club_signup.html">Club Sign Ups</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
-            <a href="login.html" class="nav-signin">Sign In</a>
-        </div>
-    </div>
+            <a href="login.html">Sign In</a>
+        </nav>
+        <hr>
+    </header>
 
-    <div class="bottom-header-line"></div>
-
-    <!-- Hero -->
-    <section class="clubs-hero">
-        <div class="clubs-hero-overlay"></div>
-        <div class="clubs-hero-content">
+    <main>
+        <section>
             <h1>Club Events</h1>
-            <p>Browse York University club events — expand any listing to see full details.</p>
-        </div>
-    </section>
+            <p>Browse York University club events and expand any listing to see details.</p>
+        </section>
 
-    <!-- Search & Filter -->
-    <section class="clubs-search-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Search and Filter Events</h2>
+        <section>
+            <h2>Search and Filter Events</h2>
+            <form>
+                <fieldset>
+                    <legend>Find an event</legend>
+                    <p>
+                        <label for="event-search">Search by Event Name</label>
+                        <input type="text" id="event-search" placeholder="Type an event name" oninput="filterEvents()">
+                    </p>
+                    <p>
+                        <label for="event-filter">Filter by Category</label>
+                        <select id="event-filter">
+                            <option value="">All categories</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button type="button">Search Events</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
 
-            <div class="clubs-filters">
-                <div class="filter-group">
-                    <label for="event-search">Search by Event Name</label>
-                    <input type="text" id="event-search" placeholder="Type an event name" oninput="filterEvents()">
-                </div>
+        <section>
+            <h2>Event Listings</h2>
+            <ul id="events-list"></ul>
+        </section>
+    </main>
 
-                <div class="filter-group">
-                    <label for="event-filter">Filter by Category</label>
-                    <select id="event-filter" class="contact-select" onchange="filterEvents()">
-                        <option value="">All categories</option>
-                        <option value="Academic">Academic</option>
-                        <option value="Cultural">Cultural</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Arts">Arts</option>
-                    </select>
-                </div>
-
-                <div class="filter-group filter-btn-group">
-                    <button class="search-clubs-btn" onclick="filterEvents()">Search Events</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Listings -->
-    <section class="clubs-listings-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Event Listings</h2>
-
-            <ul id="events-list" class="events-list">
-                <!-- Injected by JS -->
-            </ul>
-
-            <p id="no-results" class="clubs-no-results" style="display:none;">
-                No events found matching your search.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
+    <footer>
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
     </footer>
@@ -185,40 +165,35 @@
 
             if (list.length === 0) {
                 container.innerHTML = '';
-                noResults.style.display = 'block';
+                noResults.hidden = false;
                 return;
             }
 
-            noResults.style.display = 'none';
+            noResults.hidden = true;
             container.innerHTML = list.map((ev, i) => {
                 const color = categoryColors[ev.category] || 'crimson';
                 return `
-                <li class="event-item">
+                <li>
                     <details>
-                        <summary class="event-summary">
-                            <div class="event-poster-placeholder" style="background-color:${color}">${ev.poster}</div>
-                            <div class="event-summary-info">
-                                <span class="event-summary-name">${ev.name}</span>
-                                <span class="event-summary-meta">${ev.date} &bull; ${ev.club}</span>
-                            </div>
-                            <span class="event-category-badge" style="background-color:${color}">${ev.category}</span>
-                            <span class="event-chevron">&#9654;</span>
+                        <summary>
+                            <strong>${ev.name}</strong> — ${ev.date} • ${ev.club}
                         </summary>
 
-                        <div class="event-details">
+                        <article>
                             <h3>Event Details</h3>
-                            <ul class="event-meta-list">
+                            <ul>
                                 <li><strong>Date:</strong> ${ev.date}</li>
                                 <li><strong>Time:</strong> ${ev.time}</li>
                                 <li><strong>Location:</strong> ${ev.location}</li>
                                 <li><strong>Hosted by:</strong> ${ev.club}</li>
                             </ul>
-                            <p class="event-desc">${ev.description}</p>
-                            <div class="event-actions">
-                                <button class="event-btn event-btn-primary" onclick="handleSignUp('${ev.name}')">Sign Up</button>
-                                <button class="event-btn event-btn-secondary" onclick="handleUpdates('${ev.name}')">Get Updates</button>
-                            </div>
-                        </div>
+                            <p>${ev.description}</p>
+                            <p><em style="color:${color}">${ev.category}</em> (${ev.poster})</p>
+                            <p>
+                                <button type="button" onclick="handleSignUp('${ev.name}')">Sign Up</button>
+                                <button type="button" onclick="handleUpdates('${ev.name}')">Get Updates</button>
+                            </p>
+                        </article>
                     </details>
                 </li>`;
             }).join('');

@@ -6,83 +6,64 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <div class="top-header-line"></div>
-
-    <div class="middle-header-line">
-        <div class="header-content">
-            <img src="assets/york-logo.png" class="logo" alt="York University Logo">
-            <div class="title">Club Finder</div>
-        </div>
-        <div class="navBoxes">
+    <header>
+        <p>
+            <img src="assets/york-logo.png" alt="York University Logo">
+            Club Finder
+        </p>
+        <nav aria-label="Primary">
             <a href="index.html">Home</a>
             <a href="clubs.html">Explore Clubs</a>
             <a href="club_events.html">Club Events</a>
             <a href="club_signup.html">Club Sign Ups</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
-            <a href="login.html" class="nav-signin">Sign In</a>
-        </div>
-    </div>
+            <a href="login.html">Sign In</a>
+        </nav>
+        <hr>
+    </header>
 
-    <div class="bottom-header-line"></div>
-
-    <!-- Clubs Hero -->
-    <section class="clubs-hero">
-        <div class="clubs-hero-overlay"></div>
-        <div class="clubs-hero-content">
+    <main>
+        <section>
             <h1>Explore Clubs</h1>
             <p>Find your community at York University.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Search & Filter -->
-    <section class="clubs-search-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Search and Filter Clubs</h2>
+        <section>
+            <h2>Search and Filter Clubs</h2>
+            <form>
+                <fieldset>
+                    <legend>Find a club</legend>
+                    <p>
+                        <label for="search-name">Search by Club Name</label>
+                        <input type="text" id="search-name" placeholder="Club name" oninput="filterClubs()">
+                    </p>
+                    <p>
+                        <label for="filter-category">Filter by Category</label>
+                        <select id="filter-category" onchange="filterClubs()">
+                            <option value="">All categories</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button type="button" onclick="filterClubs()">Search Clubs</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
 
-            <div class="clubs-filters">
-                <div class="filter-group">
-                    <label for="search-name">Search by Club Name</label>
-                    <input type="text" id="search-name" placeholder="Club name" oninput="filterClubs()">
-                </div>
+        <section>
+            <h2>Club Listings</h2>
+            <ul id="clubs-list"></ul>
+            <p id="no-results" hidden>No clubs found matching your search.</p>
+        </section>
+    </main>
 
-                <div class="filter-group">
-                    <label for="filter-category">Filter by Category</label>
-                    <select id="filter-category" class="contact-select" onchange="filterClubs()">
-                        <option value="">All categories</option>
-                        <option value="Academic">Academic</option>
-                        <option value="Cultural">Cultural</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Arts">Arts</option>
-                    </select>
-                </div>
-
-                <div class="filter-group filter-btn-group">
-                    <button class="search-clubs-btn" onclick="filterClubs()">Search Clubs</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Club Listings -->
-    <section class="clubs-listings-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Club Listings</h2>
-
-            <div id="clubs-list" class="clubs-list">
-                <!-- Cards injected by JS -->
-            </div>
-
-            <p id="no-results" class="clubs-no-results" style="display:none;">
-                No clubs found matching your search.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
+    <footer>
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
     </footer>
 
@@ -118,25 +99,22 @@
 
             if (list.length === 0) {
                 container.innerHTML = '';
-                noResults.style.display = 'block';
+                noResults.hidden = false;
                 return;
             }
 
-            noResults.style.display = 'none';
+            noResults.hidden = true;
             container.innerHTML = list.map(club => {
                 const color = categoryColors[club.category] || 'crimson';
                 const initials = getInitials(club.name);
                 return `
-                <div class="club-card">
-                    <div class="club-logo-placeholder" style="background-color:${color}">${initials}</div>
-                    <div class="club-info">
-                        <div class="club-card-top">
-                            <h3 class="club-name">${club.name}</h3>
-                            <span class="club-category" style="background-color:${color}">${club.category}</span>
-                        </div>
-                        <p class="club-description">${club.description}</p>
-                    </div>
-                </div>`;
+                <li>
+                    <article>
+                        <p><strong>${initials}</strong> <strong>${club.name}</strong></p>
+                        <p><em style="color:${color}">${club.category}</em></p>
+                        <p>${club.description}</p>
+                    </article>
+                </li>`;
             }).join('');
         }
 
@@ -153,7 +131,6 @@
             renderClubs(filtered);
         }
 
-        // Initial render
         renderClubs(clubs);
     </script>
 
