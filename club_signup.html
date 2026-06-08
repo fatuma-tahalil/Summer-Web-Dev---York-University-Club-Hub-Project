@@ -139,7 +139,7 @@
 
                 <p id="signup-error" aria-live="polite"></p>
 
-                <button type="button" onclick="handleSignUp()">
+                <button type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="20 6 9 17 4 12"/>
@@ -154,67 +154,6 @@
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
     </footer>
-
-    <script>
-        const clubData = {
-            "York Computer Science Society":  { category: "Technology", description: "A hub for CS students to collaborate, code, and grow professionally." },
-            "York Debate Club":               { category: "Academic",   description: "Sharpen your argumentation and public speaking skills." },
-            "African Students Association":   { category: "Cultural",   description: "Celebrating African heritage, culture, and community at York." },
-            "York Robotics Club":             { category: "Technology", description: "Design, build, and program robots with fellow engineers." },
-            "York Soccer Club":               { category: "Sports",     description: "Casual and competitive soccer for all skill levels." },
-            "Film & Photography Society":     { category: "Arts",       description: "Explore visual storytelling through film and photography." },
-            "South Asian Students Alliance":  { category: "Cultural",   description: "Building community and celebrating South Asian culture on campus." },
-            "York Pre-Law Society":           { category: "Academic",   description: "Helping aspiring lawyers prepare for law school and legal careers." },
-            "York Basketball Association":    { category: "Sports",     description: "Join weekly pick-up games and inter-club tournaments." },
-            "York Fine Arts Collective":      { category: "Arts",       description: "A space for painters, sculptors, and visual artists to create." },
-        };
-
-        document.getElementById('club-name').addEventListener('change', function () {
-            const data = clubData[this.value];
-            if (!data) return;
-
-            const catSelect = document.getElementById('club-category');
-            for (let i = 0; i < catSelect.options.length; i++) {
-                if (catSelect.options[i].value === data.category) {
-                    catSelect.selectedIndex = i;
-                    break;
-                }
-            }
-            document.getElementById('club-description').value = data.description;
-        });
-
-        function handleSignUp() {
-            const club   = document.getElementById('club-name').value;
-            const cat    = document.getElementById('club-category').value;
-            const name   = document.getElementById('student-name').value.trim();
-            const sid    = document.getElementById('student-id').value.trim();
-            const email  = document.getElementById('student-email').value.trim();
-            const year   = document.getElementById('student-year').value;
-            const reason = document.getElementById('student-reason').value.trim();
-            const err    = document.getElementById('signup-error');
-
-            if (!club || !cat || !name || !sid || !email || !year || !reason) {
-                err.textContent = 'Please fill in all required fields before submitting.';
-                return;
-            }
-
-            const yorkEmail = /^[^\s@]+@(my\.yorku\.ca|yorku\.ca)$/i;
-            if (!yorkEmail.test(email)) {
-                err.textContent = 'Please use a valid York University email (@my.yorku.ca or @yorku.ca).';
-                return;
-            }
-
-            const idPattern = /^\d{9}$/;
-            if (!idPattern.test(sid)) {
-                err.textContent = 'Student ID must be a 9-digit number.';
-                return;
-            }
-
-            err.textContent = '';
-            document.getElementById('signup-form').hidden = true;
-            document.getElementById('form-success').hidden = false;
-        }
-    </script>
 
 </body>
 </html>

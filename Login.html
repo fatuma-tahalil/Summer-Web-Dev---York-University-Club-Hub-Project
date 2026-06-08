@@ -29,7 +29,7 @@
                 <h1>Club Finder</h1>
                 <p>Sign in with your York University credentials</p>
 
-                <form onsubmit="handleLogin(event)">
+                <form>
                     <fieldset>
                         <legend>Sign In</legend>
 
@@ -63,23 +63,5 @@
     <footer>
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
     </footer>
-
-    <script>
-        function handleLogin(event) {
-            event.preventDefault();
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value.trim();
-            const err = document.getElementById('login-error');
-
-            if (!user || !pass) {
-                err.textContent = 'Please enter both your username and password.';
-                return;
-            }
-
-            err.textContent = '';
-            window.location.href = 'index.html';
-        }
-    </script>
-
 </body>
 </html>
