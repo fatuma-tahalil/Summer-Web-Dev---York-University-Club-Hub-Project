@@ -6,156 +6,149 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <div class="top-header-line"></div>
-
-    <div class="middle-header-line">
-        <div class="header-content">
-            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
-            <div class="title">Club Finder</div>
-        </div>
-        <div class="navBoxes">
+    <header>
+        <p>
+            <img src="assets/york-logo.png" alt="York University Logo">
+            Club Finder
+        </p>
+        <nav aria-label="Primary">
             <a href="Index.html">Home</a>
             <a href="Clubs.html">Explore Clubs</a>
-            <a href="ClubEvents.html">Club Events</a>
-            <a href="ClubSignUp.html">Club Sign Ups</a>
+            <a href="Club_events.html">Club Events</a>
+            <a href="Club_signup.html">Club Sign Ups</a>
             <a href="About.html">About Us</a>
             <a href="Contact.html">Contact Us</a>
-            <a href="Login.html" class="nav-signin">Sign In</a>
-        </div>
-    </div>
+            <a href="Login.html">Sign In</a>
+        </nav>
+        <hr>
+    </header>
 
-    <div class="bottom-header-line"></div>
-
-    <!-- Clubs Hero -->
-    <section class="clubs-hero">
-        <div class="clubs-hero-overlay"></div>
-        <div class="clubs-hero-content">
+    <main>
+        <section>
             <h1>Explore Clubs</h1>
             <p>Find your community at York University.</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- Search & Filter -->
-    <section class="clubs-search-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Search and Filter Clubs</h2>
+        <section>
+            <h2>Search and Filter Clubs</h2>
+            <form>
+                <fieldset>
+                    <legend>Find a club</legend>
+                    <p>
+                        <label for="search-name">Search by Club Name</label>
+                        <input type="text" id="search-name" placeholder="Club name">
+                    </p>
+                    <p>
+                        <label for="filter-category">Filter by Category</label>
+                        <select id="filter-category">
+                            <option value="">All categories</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button type="button">Search Clubs</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
 
-            <div class="clubs-filters">
-                <div class="filter-group">
-                    <label for="search-name">Search by Club Name</label>
-                    <input type="text" id="search-name" placeholder="Club name" oninput="filterClubs()">
-                </div>
+        <section>
+            <h2>Club Listings</h2>
+            <ul id="clubs-list"></ul>
+            <p id="no-results" hidden>No clubs found matching your search.</p>
+        </section>
 
-                <div class="filter-group">
-                    <label for="filter-category">Filter by Category</label>
-                    <select id="filter-category" class="contact-select" onchange="filterClubs()">
-                        <option value="">All categories</option>
-                        <option value="Academic">Academic</option>
-                        <option value="Cultural">Cultural</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Arts">Arts</option>
-                    </select>
-                </div>
+        <section>
+            <ol>
+                <li>
+                    <h3>York Computer Science Society</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>A hub for CS students to collaborate, code, and grow professionally.</p>
+                    </div>
+                </li>
 
-                <div class="filter-group filter-btn-group">
-                    <button class="search-clubs-btn" onclick="filterClubs()">Search Clubs</button>
-                </div>
-            </div>
-        </div>
-    </section>
+                <li>
+                    <h3>York Debate Club</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Sharpen your argumentation and public speaking skills.</p>
+                    </div>
+                </li>
 
-    <!-- Club Listings -->
-    <section class="clubs-listings-section">
-        <div class="clubs-container">
-            <h2 class="section-heading">Club Listings</h2>
+                <li>
+                    <h3>African Students Association</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Celebrating African heritage, culture, and community at York.</p>
+                    </div>
+                </li>
 
-            <div id="clubs-list" class="clubs-list">
-                <!-- Cards injected by JS -->
-            </div>
+                <li>
+                    <h3>York Robotics Club</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Design, build, and program robots with fellow engineers.</p>
+                    </div>
+                </li>
 
-            <p id="no-results" class="clubs-no-results" style="display:none;">
-                No clubs found matching your search.
-            </p>
-        </div>
-    </section>
+                <li>
+                    <h3>York Soccer Club</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Casual and competitive soccer for all skill levels.</p>
+                    </div>
+                </li>
+        
+                <li>
+                    <h3>Film & Photography Society</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Explore visual storytelling through film and photography.</p>
+                    </div>
+                </li>
 
-    <!-- Footer -->
-    <footer class="site-footer">
+                <li>
+                    <h3>South Asian Students Alliance</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Building community and celebrating South Asian culture on campus.</p>
+                    </div>
+                </li>
+
+                <li>
+                    <h3>York Pre-Law Society</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Helping aspiring lawyers prepare for law school and legal careers.</p>
+                    </div>
+                </li>
+
+                <li>
+                    <h3>York Basketball Association</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>Join weekly pick-up games and inter-club tournaments.</p>
+                    </div>
+                </li>
+
+                <li>
+                    <h3>York Fine Arts Collective</h3>
+                    <div>
+                        <h4>Description</h4>
+                        <p>A space for painters, sculptors, and visual artists to create.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <footer>
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
     </footer>
-
-    <script>
-        const clubs = [
-            { name: "York Computer Science Society",      category: "Technology", description: "A hub for CS students to collaborate, code, and grow professionally." },
-            { name: "York Debate Club",                   category: "Academic",   description: "Sharpen your argumentation and public speaking skills." },
-            { name: "African Students Association",       category: "Cultural",   description: "Celebrating African heritage, culture, and community at York." },
-            { name: "York Robotics Club",                 category: "Technology", description: "Design, build, and program robots with fellow engineers." },
-            { name: "York Soccer Club",                   category: "Sports",     description: "Casual and competitive soccer for all skill levels." },
-            { name: "Film & Photography Society",         category: "Arts",       description: "Explore visual storytelling through film and photography." },
-            { name: "South Asian Students Alliance",      category: "Cultural",   description: "Building community and celebrating South Asian culture on campus." },
-            { name: "York Pre-Law Society",               category: "Academic",   description: "Helping aspiring lawyers prepare for law school and legal careers." },
-            { name: "York Basketball Association",        category: "Sports",     description: "Join weekly pick-up games and inter-club tournaments." },
-            { name: "York Fine Arts Collective",          category: "Arts",       description: "A space for painters, sculptors, and visual artists to create." },
-        ];
-
-        function getInitials(name) {
-            return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
-        }
-
-        const categoryColors = {
-            Academic:   '#2c5f8a',
-            Cultural:   '#7b3f9e',
-            Sports:     '#1a7a4a',
-            Technology: '#b35c00',
-            Arts:       '#a0002a',
-        };
-
-        function renderClubs(list) {
-            const container = document.getElementById('clubs-list');
-            const noResults = document.getElementById('no-results');
-
-            if (list.length === 0) {
-                container.innerHTML = '';
-                noResults.style.display = 'block';
-                return;
-            }
-
-            noResults.style.display = 'none';
-            container.innerHTML = list.map(club => {
-                const color = categoryColors[club.category] || 'crimson';
-                const initials = getInitials(club.name);
-                return `
-                <div class="club-card">
-                    <div class="club-logo-placeholder" style="background-color:${color}">${initials}</div>
-                    <div class="club-info">
-                        <div class="club-card-top">
-                            <h3 class="club-name">${club.name}</h3>
-                            <span class="club-category" style="background-color:${color}">${club.category}</span>
-                        </div>
-                        <p class="club-description">${club.description}</p>
-                    </div>
-                </div>`;
-            }).join('');
-        }
-
-        function filterClubs() {
-            const nameQuery = document.getElementById('search-name').value.trim().toLowerCase();
-            const catQuery  = document.getElementById('filter-category').value;
-
-            const filtered = clubs.filter(club => {
-                const matchName = club.name.toLowerCase().includes(nameQuery);
-                const matchCat  = catQuery === '' || club.category === catQuery;
-                return matchName && matchCat;
-            });
-
-            renderClubs(filtered);
-        }
-
-        // Initial render
-        renderClubs(clubs);
-    </script>
-
 </body>
 </html>
