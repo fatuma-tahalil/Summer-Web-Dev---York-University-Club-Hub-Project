@@ -9,7 +9,6 @@
     <header>
         <p>
             <img src="assets/york-logo.png" alt="York University Logo">
-            Club Finder
         </p>
         <nav aria-label="Primary">
             <a href="index.html">Home</a>
@@ -31,16 +30,16 @@
 
         <section>
             <h2>Search and Filter Events</h2>
-            <form>
+            <form method="get" action="#">
                 <fieldset>
                     <legend>Find an event</legend>
                     <p>
                         <label for="event-search">Search by Event Name</label>
-                        <input type="text" id="event-search" placeholder="Type an event name">
+                        <input type="text" id="event-search" name="event-search" placeholder="Type an event name">
                     </p>
                     <p>
                         <label for="event-filter">Filter by Category</label>
-                        <select id="event-filter">
+                        <select id="event-filter" name="event-filter">
                             <option value="">All categories</option>
                             <option value="Academic">Academic</option>
                             <option value="Cultural">Cultural</option>
@@ -50,7 +49,7 @@
                         </select>
                     </p>
                     <p>
-                        <button type="button">Search Events</button>
+                        <button type="submit">Search Events</button>
                     </p>
                 </fieldset>
             </form>

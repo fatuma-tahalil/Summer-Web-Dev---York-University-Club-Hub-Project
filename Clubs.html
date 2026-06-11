@@ -31,16 +31,16 @@
 
         <section>
             <h2>Search and Filter Clubs</h2>
-            <form>
+            <form method="get" action="#">
                 <fieldset>
                     <legend>Find a club</legend>
                     <p>
                         <label for="search-name">Search by Club Name</label>
-                        <input type="text" id="search-name" placeholder="Club name">
+                        <input type="text" id="search-name" name="search-name" placeholder="Club name">
                     </p>
                     <p>
                         <label for="filter-category">Filter by Category</label>
-                        <select id="filter-category">
+                        <select id="filter-category" name="filter-category">
                             <option value="">All categories</option>
                             <option value="Academic">Academic</option>
                             <option value="Cultural">Cultural</option>
@@ -50,7 +50,7 @@
                         </select>
                     </p>
                     <p>
-                        <button type="button">Search Clubs</button>
+                        <button type="submit">Search Clubs</button>
                     </p>
                 </fieldset>
             </form>
