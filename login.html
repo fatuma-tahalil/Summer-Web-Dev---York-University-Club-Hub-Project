@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In — Club Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <p>
+            <img src="assets/york-logo.png" alt="York University Logo">
+        </p>
+        <nav aria-label="Primary">
+                <a href="index.html">Home</a>
+                <a href="clubs.html">Explore Clubs</a>
+                <a href="club_events.html">Club Events</a>
+                <a href="club_signup.html">Club Sign Ups</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="login.html">Sign In</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <section aria-label="Sign in page">
+                <h1>Club Finder</h1>
+                <p>Sign in with your York University credentials</p>
+
+                <form>
+                    <fieldset>
+                        <legend>Sign In</legend>
+
+                        <p>
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" placeholder="e.g. jsmith" required aria-required="true">
+                        </p>
+                        <p>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="••••••••" required aria-required="true">
+                        </p>
+                    </fieldset>
+
+                    <button type="submit">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <polyline points="10 17 15 12 10 7"/>
+                        <line x1="15" y1="12" x2="3" y2="12"/>
+                    </svg>
+                    Sign In
+                    </button>
+
+                    <p id="login-error" aria-live="polite"></p>
+                </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
+        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
+    </footer>
+</body>
+</html>

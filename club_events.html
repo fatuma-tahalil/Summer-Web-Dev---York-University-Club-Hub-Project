@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Club Events — Club Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <p>
+            <img src="assets/york-logo.png" alt="York University Logo">
+        </p>
+        <nav aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="clubs.html">Explore Clubs</a>
+            <a href="club_events.html">Club Events</a>
+            <a href="club_signup.html">Club Sign Ups</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Sign In</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main>
+        <section>
+            <h1>Club Events</h1>
+            <p>Browse York University club events and expand any listing to see details.</p>
+        </section>
+
+        <section>
+            <h2>Search and Filter Events</h2>
+            <form method="get" action="#">
+                <fieldset>
+                    <legend>Find an event</legend>
+                    <p>
+                        <label for="event-search">Search by Event Name</label>
+                        <input type="text" id="event-search" name="event-search" placeholder="Type an event name">
+                    </p>
+                    <p>
+                        <label for="event-filter">Filter by Category</label>
+                        <select id="event-filter" name="event-filter">
+                            <option value="">All categories</option>
+                            <option value="Academic">Academic</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                    </p>
+                    <p>
+                        <button type="submit">Search Events</button>
+                    </p>
+                </fieldset>
+            </form>
+        </section>
+
+        <section>
+            <h2>Event Listings</h2>
+            <ul id="events-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
+        <p><a href="contact.html">Contact the ClubConnect team</a></p>
+        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
+    </footer>
+</body>
+</html>
