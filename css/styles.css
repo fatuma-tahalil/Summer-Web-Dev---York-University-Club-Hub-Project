@@ -1,0 +1,624 @@
+/* ============================================================
+   York University Club Finder — Main Stylesheet
+   Rewritten to target the project's semantic (classless) HTML.
+   Design: crimson York theme, gradient hero, cards, styled forms.
+   ============================================================ */
+
+/* --- Design tokens ----------------------------------------- */
+:root {
+    --crimson: crimson;
+    --crimson-dark: #a00020;
+    --crimson-deep: #9d001e;
+    --navy: #1a1a2e;
+    --ink: #111111;
+    --text: #444444;
+    --muted: #777777;
+    --line: #cccccc;
+    --bg-soft: #f7f7f7;
+    --serif: Georgia, 'Times New Roman', serif;
+}
+
+/* --- Reset & Base ------------------------------------------ */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--bg-soft);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--crimson);
+}
+
+/* ============================================================
+   Header  (the <p><img></p> + <nav> + <hr> block)
+   Recreates the crimson top rule + white middle bar.
+   ============================================================ */
+header {
+    background-color: #ffffff;
+    border-top: 6px solid var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 20px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo + optional "Club Finder" wordmark live in the first <p> */
+header > p {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--ink);
+}
+
+header > p img {
+    height: 45px;
+    width: auto;
+}
+
+/* --- Navigation -------------------------------------------- */
+header nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--ink);
+    border: 2px solid var(--crimson);
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+header nav a:hover {
+    background-color: var(--crimson);
+    color: #ffffff;
+}
+
+/* Make the final "Sign In" link a filled pill */
+header nav a:last-child {
+    background-color: var(--crimson);
+    color: #ffffff;
+}
+
+header nav a:last-child:hover {
+    background-color: var(--crimson-dark);
+    border-color: var(--crimson-dark);
+}
+
+/* The <hr> after nav becomes the bottom crimson rule, full width */
+header hr {
+    flex-basis: 100%;
+    width: 100%;
+    height: 4px;
+    border: none;
+    background-color: var(--crimson);
+    margin: 8px 0 0;
+}
+
+/* ============================================================
+   Hero  — the first <section> inside <main> on every page.
+   Dark navy panel with a crimson -> navy gradient overlay.
+   ============================================================ */
+main > section:first-child {
+    position: relative;
+    background-color: var(--navy);
+    background-image: linear-gradient(
+        160deg,
+        rgba(157, 0, 30, 0.85) 0%,
+        rgba(20, 20, 40, 0.92) 100%
+    );
+    color: #ffffff;
+    text-align: center;
+    padding: 64px 24px;
+    overflow: hidden;
+    max-width: none;
+    margin: 0;
+}
+
+main > section:first-child h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 14px;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+}
+
+main > section:first-child > p {
+    font-size: clamp(1rem, 2.2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 auto;
+    max-width: 640px;
+    line-height: 1.6;
+}
+
+/* Call-to-action link in the hero (e.g. "Explore Clubs" on home) */
+main > section:first-child p a {
+    display: inline-block;
+    margin-top: 24px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: var(--crimson);
+    border: 2px solid #ffffff;
+    padding: 12px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+main > section:first-child p a:hover {
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* Home page: hero fills most of the viewport */
+body:has(main > section:first-child > p > a[href="clubs.html"]) main > section:first-child {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================================
+   Content sections  (every <section> after the hero)
+   ============================================================ */
+main > section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+main > section h2 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--crimson);
+    display: inline-block;
+}
+
+main > section p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+}
+
+main blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--crimson);
+    border-left: 4px solid var(--crimson);
+    margin: 18px 0;
+    padding: 8px 0 8px 18px;
+    font-size: 1.05rem;
+}
+
+/* ============================================================
+   "Meet the Team" / Contact info lists rendered as cards
+   ============================================================ */
+main > section:last-of-type ul:has(a[href^="mailto:"]) {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Only style <li> as cards when they contain a mailto link */
+main section li:has(a[href^="mailto:"]) {
+    background: #ffffff;
+    border-top: 4px solid var(--crimson);
+    padding: 22px 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    list-style: none;
+    line-height: 1.6;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+main section li:has(a[href^="mailto:"]):hover {
+    box-shadow: 0 6px 24px rgba(157, 0, 30, 0.15);
+    transform: translateY(-3px);
+}
+
+main section li:has(a[href^="mailto:"]) strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+}
+
+main section li a[href^="mailto:"] {
+    color: var(--crimson);
+    text-decoration: none;
+    word-break: break-word;
+}
+
+main section li a[href^="mailto:"]:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   Forms  (login, contact, club sign-up, search filters)
+   ============================================================ */
+form {
+    background: #ffffff;
+    border-top: 4px solid var(--crimson);
+    padding: 28px 28px 24px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    margin-top: 12px;
+}
+
+form h2 {
+    margin-top: 0;
+}
+
+fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 18px 20px 6px;
+    margin: 0 0 22px;
+}
+
+legend {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555555;
+    padding: 0 8px;
+}
+
+form p {
+    margin: 0 0 18px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 6px;
+}
+
+/* Required asterisk wrapped in <span> */
+label span {
+    color: var(--crimson);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    border: 2px solid var(--line);
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--crimson);
+}
+
+select {
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Read-only auto-filled description on the sign-up form */
+textarea[readonly] {
+    background-color: #f5f5f5;
+    color: #666666;
+    cursor: default;
+    resize: none;
+}
+
+/* --- Buttons (submit / search) ----------------------------- */
+button[type="submit"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    background-color: var(--crimson);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    border: 2px solid var(--crimson);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--crimson-dark);
+    border-color: var(--crimson-dark);
+}
+
+button[type="submit"] svg {
+    flex-shrink: 0;
+}
+
+/* Login & signup submit buttons stretch full width */
+section[aria-label="Sign in page"] form > button[type="submit"],
+#signup-form > button[type="submit"] {
+    width: 100%;
+}
+
+/* Search-form buttons read as a lighter secondary style */
+form[action="#"] button[type="submit"] {
+    width: auto;
+    background-color: #ffffff;
+    color: var(--ink);
+    border-color: #aaaaaa;
+}
+
+form[action="#"] button[type="submit"]:hover {
+    background-color: var(--crimson);
+    border-color: var(--crimson);
+    color: #ffffff;
+}
+
+/* --- Error message live regions ---------------------------- */
+#login-error,
+#contact-error,
+#signup-error {
+    color: var(--crimson);
+    font-size: 0.85rem;
+    margin: 10px 0 0;
+    min-height: 1.2em;
+    text-align: center;
+}
+
+/* ============================================================
+   Login page — center the sign-in card on a dark backdrop
+   ============================================================ */
+body:has(section[aria-label="Sign in page"]) main {
+    background-color: var(--navy);
+    background-image: linear-gradient(
+        160deg,
+        rgba(157, 0, 30, 0.80) 0%,
+        rgba(20, 20, 40, 0.92) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+}
+
+body:has(section[aria-label="Sign in page"]) main > section[aria-label="Sign in page"] {
+    position: relative;
+    background-color: #ffffff;
+    background-image: none;
+    border-top: 5px solid var(--crimson);
+    width: 100%;
+    max-width: 420px;
+    padding: 36px 32px 28px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+    text-align: center;
+    margin: 0;
+    min-height: 0;
+    display: block;
+    overflow: visible;
+}
+
+body:has(section[aria-label="Sign in page"]) section[aria-label="Sign in page"] h1 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--ink);
+    margin: 0 0 6px;
+}
+
+body:has(section[aria-label="Sign in page"]) section[aria-label="Sign in page"] > p {
+    font-size: 0.9rem;
+    color: #555555;
+    margin: 0 0 24px;
+    line-height: 1.5;
+    max-width: none;
+}
+
+section[aria-label="Sign in page"] form {
+    text-align: left;
+    border-top: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ============================================================
+   Success messages (contact + signup confirmation panels)
+   ============================================================ */
+#form-success {
+    background: #ffffff;
+    border-top: 4px solid var(--crimson);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    text-align: center;
+    padding: 40px 24px;
+}
+
+#form-success svg {
+    margin-bottom: 8px;
+}
+
+#form-success h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 0 0 8px;
+}
+
+#form-success p {
+    font-size: 0.95rem;
+    color: #555555;
+    margin: 0;
+}
+
+/* ============================================================
+   "How It Works" numbered steps (club sign-up page)
+   ============================================================ */
+main section ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+main section ol > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 48px;
+}
+
+main section ol > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--crimson);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main section ol > li strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+main section ol > li p {
+    font-size: 0.88rem;
+    color: #666666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Club & Event listings  (dynamically populated <ul>s)
+   ============================================================ */
+#clubs-list,
+#events-list {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+#clubs-list > li,
+#events-list > li {
+    background: #ffffff;
+    border-left: 5px solid var(--crimson);
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+#clubs-list > li:hover,
+#events-list > li:hover {
+    box-shadow: 0 5px 20px rgba(157, 0, 30, 0.13);
+    transform: translateX(3px);
+}
+
+#events-list details summary {
+    cursor: pointer;
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--ink);
+}
+
+#no-results {
+    font-size: 0.95rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 24px;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+footer {
+    background-color: var(--ink);
+    color: rgba(255, 255, 255, 0.65);
+    text-align: center;
+    padding: 20px 24px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+footer p {
+    margin: 4px 0;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 720px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+    header nav {
+        justify-content: center;
+    }
+    main > section {
+        padding: 32px 20px;
+    }
+}
