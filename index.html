@@ -6,34 +6,36 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <p>
-            <img src="assets/york-logo.png" alt="York University Logo">
-        </p>
-        <nav aria-label="Primary">
+
+    <div class="top-header-line"></div>
+
+    <div class="middle-header-line">
+        <div class="header-content">
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
+        </div>
+
+        <div class="navBoxes">
             <a href="index.html">Home</a>
             <a href="clubs.html">Explore Clubs</a>
             <a href="club_events.html">Club Events</a>
             <a href="club_signup.html">Club Sign Ups</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
-            <a href="login.html">Sign In</a>
-        </nav>
-        <hr>
-    </header>
+            <a href="login.html" class="nav-signin">Sign In</a>
+        </div>
+    </div>
 
-    <main>
-        <section>
-            <h1>Welcome to Club Finder!</h1>
-            <p>Find the most up-to-date events across York University.</p>
-            <p><a href="clubs.html">Explore Clubs</a></p>
-        </section>
-    </main>
+    <div class="bottom-header-line"></div>
 
-    <footer>
-        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
-        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
-    </footer>
+    <section class="mainWelcome">
+        <div class="innerWelcomeGradient"></div>
+        <div class="welcomeContent">
+            <h1 class="indexPageTitle">Welcome to Club Finder!</h1>
+            <p class="indexPageSubTitle">Find the Most Up-to-Date Events Across York University</p>
+            <a href="clubs.html" class="exploreButton">Explore Clubs</a>
+        </div>
+    </section>
 
 </body>
 </html>

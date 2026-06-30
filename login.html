@@ -1,67 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <title>Sign In — Club Finder</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
+
+
 <body>
 
-    <header>
-        <p>
-            <img src="assets/york-logo.png" alt="York University Logo">
-        </p>
-        <nav aria-label="Primary">
-                <a href="index.html">Home</a>
-                <a href="clubs.html">Explore Clubs</a>
-                <a href="club_events.html">Club Events</a>
-                <a href="club_signup.html">Club Sign Ups</a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Contact Us</a>
-                <a href="login.html">Sign In</a>
-        </nav>
-        <hr>
-    </header>
+    <div class="top-header-line"></div>
 
-    <main>
-        <section aria-label="Sign in page">
-                <h1>Club Finder</h1>
-                <p>Sign in with your York University credentials</p>
+    <div class="middle-header-line">
+        <div class="header-content">
 
-                <form>
-                    <fieldset>
-                        <legend>Sign In</legend>
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
 
-                        <p>
-                                <label for="username">Username</label>
-                                <input type="text" id="username" name="username" placeholder="e.g. jsmith" required aria-required="true">
-                        </p>
-                        <p>
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" placeholder="••••••••" required aria-required="true">
-                        </p>
-                    </fieldset>
+        </div>
+        <div class="navBoxes">
 
-                    <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                         viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                         aria-hidden="true">
-                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
-                        <polyline points="10 17 15 12 10 7"/>
-                        <line x1="15" y1="12" x2="3" y2="12"/>
-                    </svg>
+            <a href="index.html">Home</a>
+            <a href="clubs.html">Explore Clubs</a>
+            <a href="club_events.html">Club Events</a>
+            <a href="club_signup.html">Club Sign Ups</a>
+            <a href="about.html">About Us</a>
+
+        </div>
+    </div>
+
+    <div class="bottom-header-line"></div>
+
+    <!-- Login Section Main Content -->
+    <div class="login-page">
+
+        <div class="login-overlay"></div>
+
+        <div class="login-card">
+            <img src="assets/York_Logo.png" alt="York University Logo" class="login-logo">
+            <h2 class="login-heading">Club Finder</h2>
+            <p class="login-sub">Sign in with your York University credentials</p>
+
+            <div class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="ex. name##@my.yorku.ca">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••">
+                </div>
+
+                <button class="signin-btn" onclick="handleLogin()">
+
+                    <!-- Login arrow icon -->
+                    <img src="assets/Enter_Button.png" alt="" aria-hidden="true" class="btn-icon">
                     Sign In
-                    </button>
+                </button>
 
-                    <p id="login-error" aria-live="polite"></p>
-                </form>
-        </section>
-    </main>
+                <p id="login-error" class="login-error" aria-live="polite"></p>
+            </div>
 
-    <footer>
-        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
-        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
-    </footer>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin() {
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const err  = document.getElementById('login-error');
+
+            if (!user || !pass) {
+                err.textContent = 'Please enter both your username and password.';
+                return;
+            }
+            err.textContent = '';
+            window.location.href = 'index.html';
+        }
+
+        // Second form of entry being enter key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') handleLogin();
+        });
+    </script>
+
 </body>
 </html>

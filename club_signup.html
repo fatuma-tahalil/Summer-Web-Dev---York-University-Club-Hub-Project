@@ -1,73 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
+
     <meta charset="UTF-8">
     <title>Club Sign Ups — Club Finder</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
+
 <body>
 
-    <header>
-        <p>
-            <img src="assets/york-logo.png" alt="York University Logo">
-        </p>
-        <nav aria-label="Primary">
+    <div class="top-header-line"></div>
+
+    <div class="middle-header-line">
+        <div class="header-content">
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
+        </div>
+
+        <div class="navBoxes">
             <a href="index.html">Home</a>
             <a href="clubs.html">Explore Clubs</a>
             <a href="club_events.html">Club Events</a>
             <a href="club_signup.html">Club Sign Ups</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
-            <a href="login.html">Sign In</a>
-        </nav>
-        <hr>
-    </header>
+            <a href="login.html" class="nav-signin">Sign In</a>
+        </div>
 
-    <main>
-        <section>
+    </div>
+
+    <div class="bottom-header-line"></div>
+
+    <!-- Club main header -->
+    <section class="clubsHeadingSection">
+        <div class="clubsGradient"></div>
+        <div class="clubsHeadingContent">
             <h1>Club Sign Ups</h1>
             <p>Join a York University club and find your community.</p>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>How It Works</h2>
-            <ol>
-                    <li>
-                        <strong>Choose a club</strong>
-                        <p>Select the club you want to join from the dropdown or search on the Explore Clubs page first.</p>
-                    </li>
-                    <li>
-                        <strong>Fill in your details</strong>
-                        <p>Enter your student info and tell the club a little about why you'd like to join.</p>
-                    </li>
-                    <li>
-                        <strong>Submit & wait for confirmation</strong>
-                        <p>A club executive will review your application and reach out to your York email.</p>
-                    </li>
-            </ol>
-            <p>A valid <strong>@my.yorku.ca</strong> or <strong>@yorku.ca</strong> email is required to sign up.</p>
-        </section>
+    <!-- Sign-Up Form -->
+    <section class="signup-body">
+        <div class="signup-container">
 
-        <section id="form-success" hidden>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
-                         fill="none" stroke="crimson" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                        <polyline points="22 4 12 14.01 9 11.01"/>
-                    </svg>
+            <!-- Info panel -->
+            <div class="signup-info">
+                <h2 class="section-heading">How It Works</h2>
+                <ol class="signup-steps">
+                    <li>
+                        <span class="step-number">1</span>
+                        <div>
+                            <strong>Choose a club</strong>
+                            <p>Select the club you want to join from the dropdown or search on the Explore Clubs page first.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">2</span>
+                        <div>
+                            <strong>Fill in your details</strong>
+                            <p>Enter your student info and tell the club a little about why you'd like to join.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="step-number">3</span>
+                        <div>
+                            <strong>Submit & wait for confirmation</strong>
+                            <p>A club executive will review your application and reach out to your York email.</p>
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="signup-note">
+                    <img src="assets/info.png" alt="" class="info-icon">
+                    <span>A valid <strong>@my.yorku.ca</strong> or <strong>@yorku.ca</strong> email is required to sign up.</span>
+                </div>
+            </div>
+
+
+            <div class="contact-form-wrapper">
+
+                <!-- Success submission of form -->
+                <div id="form-success" class="form-success" style="display:none;">
+                    <img src="assets/checked.png" alt="checked" class="submitted-icon">
                     <h3>Application Submitted!</h3>
                     <p>Thanks for signing up. A club executive will contact you at your York email shortly.</p>
-        </section>
+                </div>
 
-        <section>
-            <form id="signup-form">
-                <h2>Club Sign-Up Form</h2>
+                <div id="signup-form">
+                    <h2 class="section-heading" style="margin-bottom:28px;">Club Sign-Up Form</h2>
 
-                <fieldset>
-                    <legend>Club Information</legend>
+                    <!-- Club Information  -->
+                    <fieldset class="signup-fieldset">
+                        <legend class="signup-legend">Club Information</legend>
 
-                    <p>
-                        <label for="club-name">Club Name <span>*</span></label>
-                            <select id="club-name" name="club-name" required aria-required="true">
+                        <div class="form-group">
+                            <label for="club-name">Club Name <span class="required">*</span></label>
+                            <select id="club-name" class="contact-select">
                                 <option value="" disabled selected>Select a club</option>
                                 <option value="York Computer Science Society">York Computer Science Society</option>
                                 <option value="York Debate Club">York Debate Club</option>
@@ -80,11 +112,11 @@
                                 <option value="York Basketball Association">York Basketball Association</option>
                                 <option value="York Fine Arts Collective">York Fine Arts Collective</option>
                             </select>
-                    </p>
+                        </div>
 
-                    <p>
-                        <label for="club-category">Club Category <span>*</span></label>
-                            <select id="club-category" name="club-category" required aria-required="true">
+                        <div class="form-group">
+                            <label for="club-category">Club Category <span class="required">*</span></label>
+                            <select id="club-category" class="contact-select">
                                 <option value="" disabled selected>Select a category</option>
                                 <option value="Academic">Academic</option>
                                 <option value="Cultural">Cultural</option>
@@ -92,35 +124,36 @@
                                 <option value="Technology">Technology</option>
                                 <option value="Arts">Arts</option>
                             </select>
-                    </p>
+                        </div>
 
-                    <p>
-                        <label for="club-description">Club Description</label>
-                            <textarea id="club-description" name="club-description" rows="4" placeholder="A brief description of the club (auto-fills when you select a club above)…" readonly></textarea>
-                    </p>
-                </fieldset>
+                        <div class="form-group">
+                            <label for="club-description">Club Description</label>
+                            <textarea id="club-description" rows="4" placeholder="A brief description of the club (auto-fills when you select a club above)…" readonly class="signup-readonly"></textarea>
+                        </div>
+                    </fieldset>
 
-                <fieldset>
-                    <legend>Student Information</legend>
+                    <!-- Student Information -->
+                    <fieldset class="signup-fieldset">
+                        <legend class="signup-legend">Student Information</legend>
 
-                    <p>
-                        <label for="student-name">Student Name <span>*</span></label>
-                        <input type="text" id="student-name" name="student-name" placeholder="e.g. Jane Smith" required aria-required="true">
-                    </p>
+                        <div class="form-group">
+                            <label for="student-name">Student Name <span class="required">*</span></label>
+                            <input type="text" id="student-name" placeholder="e.g. Jane Smith">
+                        </div>
 
-                    <p>
-                        <label for="student-id">Student ID <span>*</span></label>
-                        <input type="text" id="student-id" name="student-id" placeholder="e.g. 220123456" required aria-required="true">
-                    </p>
+                        <div class="form-group">
+                            <label for="student-id">Student ID <span class="required">*</span></label>
+                            <input type="text" id="student-id" placeholder="e.g. 220123456">
+                        </div>
 
-                    <p>
-                        <label for="student-email">York University Email <span>*</span></label>
-                        <input type="email" id="student-email" name="student-email" placeholder="name@my.yorku.ca" required aria-required="true">
-                    </p>
+                        <div class="form-group">
+                            <label for="student-email">York University Email <span class="required">*</span></label>
+                            <input type="email" id="student-email" placeholder="name@my.yorku.ca">
+                        </div>
 
-                    <p>
-                        <label for="student-year">Year of Study <span>*</span></label>
-                            <select id="student-year" name="student-year" required aria-required="true">
+                        <div class="form-group">
+                            <label for="student-year">Year of Study <span class="required">*</span></label>
+                            <select id="student-year" class="contact-select">
                                 <option value="" disabled selected>Select year</option>
                                 <option value="1">1st Year</option>
                                 <option value="2">2nd Year</option>
@@ -128,32 +161,93 @@
                                 <option value="4">4th Year</option>
                                 <option value="grad">Graduate Student</option>
                             </select>
-                    </p>
+                        </div>
 
-                    <p>
-                        <label for="student-reason">Why do you want to join this club? <span>*</span></label>
-                        <textarea id="student-reason" name="student-reason" rows="5" placeholder="Tell the club why you'd like to join and what you hope to contribute…" required aria-required="true"></textarea>
-                    </p>
-                </fieldset>
+                        <div class="form-group">
+                            <label for="student-reason">Why do you want to join this club? <span class="required">*</span></label>
+                            <textarea id="student-reason" rows="5" placeholder="Tell the club why you'd like to join and what you hope to contribute…"></textarea>
+                        </div>
+                    </fieldset>
 
-                <p id="signup-error" aria-live="polite"></p>
+                    <p id="signup-error" class="login-error" aria-live="polite"></p>
 
-                <button type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
+                    <button class="signin-btn" onclick="handleSignUp()">
+                        <img src="assets/checked-circle.png" alt="" class="btn-icon" aria-hidden="true">
                         Submit Sign Up
-                </button>
-            </form>
-        </section>
-    </main>
+                    </button>
+                </div>
 
-    <footer>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
-        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
     </footer>
+
+    <script>
+        const clubData = {
+            "York Computer Science Society":  { category: "Technology", description: "A hub for CS students to collaborate, code, and grow professionally." },
+            "York Debate Club":               { category: "Academic",   description: "Sharpen your argumentation and public speaking skills." },
+            "African Students Association":   { category: "Cultural",   description: "Celebrating African heritage, culture, and community at York." },
+            "York Robotics Club":             { category: "Technology", description: "Design, build, and program robots with fellow engineers." },
+            "York Soccer Club":               { category: "Sports",     description: "Casual and competitive soccer for all skill levels." },
+            "Film & Photography Society":     { category: "Arts",       description: "Explore visual storytelling through film and photography." },
+            "South Asian Students Alliance":  { category: "Cultural",   description: "Building community and celebrating South Asian culture on campus." },
+            "York Pre-Law Society":           { category: "Academic",   description: "Helping aspiring lawyers prepare for law school and legal careers." },
+            "York Basketball Association":    { category: "Sports",     description: "Join weekly pick-up games and inter-club tournaments." },
+            "York Fine Arts Collective":      { category: "Arts",       description: "A space for painters, sculptors, and visual artists to create." },
+        };
+
+        // Fill category and description when a club is selected
+        document.getElementById('club-name').addEventListener('change', function () {
+            const data = clubData[this.value];
+            if (!data) return;
+
+            const catSelect = document.getElementById('club-category');
+            for (let i = 0; i < catSelect.options.length; i++) {
+                if (catSelect.options[i].value === data.category) {
+                    catSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('club-description').value = data.description;
+        });
+
+        function handleSignUp() {
+            const club   = document.getElementById('club-name').value;
+            const cat    = document.getElementById('club-category').value;
+            const name   = document.getElementById('student-name').value.trim();
+            const sid    = document.getElementById('student-id').value.trim();
+            const email  = document.getElementById('student-email').value.trim();
+            const year   = document.getElementById('student-year').value;
+            const reason = document.getElementById('student-reason').value.trim();
+            const err    = document.getElementById('signup-error');
+
+            if (!club || !cat || !name || !sid || !email || !year || !reason) {
+                err.textContent = 'Please fill in all required fields before submitting.';
+                return;
+            }
+
+            const yorkEmail = /^[^\s@]+@(my\.yorku\.ca|yorku\.ca)$/i;
+            if (!yorkEmail.test(email)) {
+                err.textContent = 'Please use a valid York University email (@my.yorku.ca or @yorku.ca).';
+                return;
+            }
+
+            const idPattern = /^\d{9}$/;
+            if (!idPattern.test(sid)) {
+                err.textContent = 'Student ID must be a 9-digit number.';
+                return;
+            }
+
+            err.textContent = '';
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('form-success').style.display = 'flex';
+        }
+    </script>
 
 </body>
 </html>

@@ -1,70 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <title>Club Events — Club Finder</title>
     <link rel="stylesheet" href="css/styles.css">
+
 </head>
+
 <body>
-    <header>
-        <p>
-            <img src="assets/york-logo.png" alt="York University Logo">
-        </p>
-        <nav aria-label="Primary">
+
+    <div class="top-header-line"></div>
+
+    <div class="middle-header-line">
+        <div class="header-content">
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
+        </div>
+        <div class="navBoxes">
             <a href="index.html">Home</a>
             <a href="clubs.html">Explore Clubs</a>
             <a href="club_events.html">Club Events</a>
             <a href="club_signup.html">Club Sign Ups</a>
             <a href="about.html">About Us</a>
             <a href="contact.html">Contact Us</a>
-            <a href="login.html">Sign In</a>
-        </nav>
-        <hr>
-    </header>
+            <a href="login.html" class="nav-signin">Sign In</a>
+        </div>
+    </div>
 
-    <main>
-        <section>
+    <div class="bottom-header-line"></div>
+
+    <!-- Club Events -->
+    <section class="clubsHeadingSection">
+        <div class="contactGradient"></div>
+        <div class="contactHeadingContent">
             <h1>Club Events</h1>
-            <p>Browse York University club events and expand any listing to see details.</p>
-        </section>
+            <p>Browse York University club events — expand any listing to see full details.</p>
+        </div>
+    </section>
 
-        <section>
-            <h2>Search and Filter Events</h2>
-            <form method="get" action="#">
-                <fieldset>
-                    <legend>Find an event</legend>
-                    <p>
-                        <label for="event-search">Search by Event Name</label>
-                        <input type="text" id="event-search" name="event-search" placeholder="Type an event name">
-                    </p>
-                    <p>
-                        <label for="event-filter">Filter by Category</label>
-                        <select id="event-filter" name="event-filter">
-                            <option value="">All categories</option>
-                            <option value="Academic">Academic</option>
-                            <option value="Cultural">Cultural</option>
-                            <option value="Sports">Sports</option>
-                            <option value="Technology">Technology</option>
-                            <option value="Arts">Arts</option>
-                        </select>
-                    </p>
-                    <p>
-                        <button type="submit">Search Events</button>
-                    </p>
-                </fieldset>
-            </form>
-        </section>
+    <!-- Search and filter -->
+    <section class="clubs-search-section">
+        <div class="clubs-container">
+            <h2 class="section-heading">Search and Filter Events</h2>
 
-        <section>
-            <h2>Event Listings</h2>
-            <ul id="events-list"></ul>
-        </section>
-    </main>
+            <div class="clubs-filters">
+                <div class="filter-group">
+                    <label for="event-search">Search by Event Name</label>
+                    <input type="text" id="event-search" placeholder="Type an event name" oninput="filterEvents()">
+                </div>
 
-    <footer>
+                <div class="filter-group">
+                    <label for="event-filter">Filter by Category</label>
+                    <select id="event-filter" class="contact-select" onchange="filterEvents()">
+                        <option value="">All categories</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+
+                <div class="filter-group filter-btn-group">
+                    <button class="search-clubs-btn" onclick="filterEvents()">Search Events</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event listings -->
+    <section class="clubs-listings-section">
+        <div class="clubs-container">
+            <h2 class="section-heading">Event Listings</h2>
+
+            <!--Clubs will be placed by the java script below-->
+            <ul id="events-list" class="events-list">
+            </ul>
+
+            <p id="no-results" class="clubs-no-results" style="display:none;">
+                No events found matching your search.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
-        <p><small><strong>Credits:</strong> York University Logo © York University. Used with permission.</small></p>
     </footer>
+
+    <script>
+        const events = [
+            {
+                name: "Intro to Machine Learning Workshop",
+                category: "Technology",
+                club: "York Computer Science Society",
+                date: "June 14, 2026",
+                time: "2:00 PM – 5:00 PM",
+                location: "Lassonde Building, Room 1006",
+                description: "A hands-on beginner workshop covering Python, scikit-learn, and building your first ML model. Laptops required. All skill levels welcome.",
+                poster: "ML"
+            },
+            {
+                name: "Spring Debate Championship",
+                category: "Academic",
+                club: "York Debate Club",
+                date: "June 20, 2026",
+                time: "10:00 AM – 6:00 PM",
+                location: "Ross Building, Room S201",
+                description: "Inter-university debate tournament on topics of technology policy and global governance. Spectators welcome. Register by June 17.",
+                poster: "DB"
+            },
+            {
+                name: "African Heritage Night",
+                category: "Cultural",
+                club: "African Students Association",
+                date: "June 27, 2026",
+                time: "6:00 PM – 10:00 PM",
+                location: "Student Centre Ballroom",
+                description: "An evening of music, dance, food, and cultural showcases celebrating the diversity of African heritage. Free entry with York student ID.",
+                poster: "AH"
+            },
+            {
+                name: "Robot Wars: Campus Edition",
+                category: "Technology",
+                club: "York Robotics Club",
+                date: "July 5, 2026",
+                time: "12:00 PM – 4:00 PM",
+                location: "Bergeron Centre, Atrium",
+                description: "Watch student-built robots compete in an obstacle course and battle arena. Spectator event — come cheer on your favourite team!",
+                poster: "RW"
+            },
+            {
+                name: "5-a-Side Soccer Tournament",
+                category: "Sports",
+                club: "York Soccer Club",
+                date: "July 12, 2026",
+                time: "9:00 AM – 3:00 PM",
+                location: "York University Track & Field",
+                description: "Open 5-a-side tournament for all York students. Teams of five, round-robin format. Register as a team or join the free-agent pool.",
+                poster: "SC"
+            },
+            {
+                name: "End of Year Art Exhibition",
+                category: "Arts",
+                club: "York Fine Arts Collective",
+                date: "July 18, 2026",
+                time: "4:00 PM – 8:00 PM",
+                location: "Accolade East, Gallery Lobby",
+                description: "Student paintings, sculptures, and mixed-media installations on display. Light refreshments provided. All are welcome to attend.",
+                poster: "AE"
+            },
+            {
+                name: "Diwali Celebrations 2026",
+                category: "Cultural",
+                club: "South Asian Students Alliance",
+                date: "July 25, 2026",
+                time: "5:00 PM – 9:00 PM",
+                location: "Student Centre Atrium",
+                description: "Join us for Diwali festivities featuring traditional dance performances, rangoli activities, sweets, and a lamp-lighting ceremony.",
+                poster: "DW"
+            },
+            {
+                name: "Pre-Law Panel: Getting Into Law School",
+                category: "Academic",
+                club: "York Pre-Law Society",
+                date: "August 2, 2026",
+                time: "3:00 PM – 5:00 PM",
+                location: "Osgoode Hall Law School, Room 1012",
+                description: "A panel of York Law alumni and admissions advisors share tips on LSAT prep, personal statements, and the application process. Q&A included.",
+                poster: "PL"
+            },
+        ];
+
+        const categoryColors = {
+            Academic:   '#2c5f8a',
+            Cultural:   '#7b3f9e',
+            Sports:     '#1a7a4a',
+            Technology: '#b35c00',
+            Arts:       '#a0002a',
+        };
+
+        function renderEvents(list) {
+            const container = document.getElementById('events-list');
+            const noResults = document.getElementById('no-results');
+
+            if (list.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            container.innerHTML = list.map((ev, i) => {
+                const color = categoryColors[ev.category] || 'crimson';
+                return `
+                <li class="event-item">
+                    <details>
+                        <summary class="event-summary">
+                            <div class="event-poster-placeholder" style="background-color:${color}">${ev.poster}</div>
+                            <div class="event-summary-info">
+                                <span class="event-summary-name">${ev.name}</span>
+                                <span class="event-summary-meta">${ev.date} &bull; ${ev.club}</span>
+                            </div>
+                            <span class="event-category-badge" style="background-color:${color}">${ev.category}</span>
+                            <span class="event-chevron">&#9654;</span>
+                        </summary>
+
+                        <div class="event-details">
+                            <h3>Event Details</h3>
+                            <ul class="event-meta-list">
+                                <li><strong>Date:</strong> ${ev.date}</li>
+                                <li><strong>Time:</strong> ${ev.time}</li>
+                                <li><strong>Location:</strong> ${ev.location}</li>
+                                <li><strong>Hosted by:</strong> ${ev.club}</li>
+                            </ul>
+                            <p class="event-desc">${ev.description}</p>
+                            <div class="event-actions">
+                                <button class="event-btn event-btn-primary" onclick="handleSignUp('${ev.name}')">Sign Up</button>
+                                <button class="event-btn event-btn-secondary" onclick="handleUpdates('${ev.name}')">Get Updates</button>
+                            </div>
+                        </div>
+                    </details>
+                </li>`;
+            }).join('');
+        }
+
+        function filterEvents() {
+            const nameQuery = document.getElementById('event-search').value.trim().toLowerCase();
+            const catQuery  = document.getElementById('event-filter').value;
+
+            const filtered = events.filter(ev => {
+                const matchName = ev.name.toLowerCase().includes(nameQuery);
+                const matchCat  = catQuery === '' || ev.category === catQuery;
+                return matchName && matchCat;
+            });
+
+            renderEvents(filtered);
+        }
+
+        function handleSignUp(name) {
+            alert(`You've signed up for:\n"${name}"\n\nYou'll receive a confirmation shortly.`);
+        }
+
+        function handleUpdates(name) {
+            alert(`You'll receive updates for:\n"${name}"`);
+        }
+
+        renderEvents(events);
+    </script>
+
 </body>
 </html>
