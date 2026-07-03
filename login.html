@@ -76,25 +76,5 @@
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
     </footer>
 
-    <script>
-        function handleLogin() {
-            const user = document.getElementById('username').value.trim();
-            const pass = document.getElementById('password').value.trim();
-            const err  = document.getElementById('login-error');
-
-            if (!user || !pass) {
-                err.textContent = 'Please enter both your username and password.';
-                return;
-            }
-            err.textContent = '';
-            window.location.href = 'index.html';
-        }
-
-        // Second form of entry being enter key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') handleLogin();
-        });
-    </script>
-
 </body>
 </html>

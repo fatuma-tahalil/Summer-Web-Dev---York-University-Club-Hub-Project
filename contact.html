@@ -133,36 +133,5 @@
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
     </footer>
 
-    <script>
-        function handleContact() {
-            const name    = document.getElementById('contact-name').value.trim();
-            const email   = document.getElementById('contact-email').value.trim();
-            const topic   = document.getElementById('contact-topic').value;
-            const message = document.getElementById('contact-message').value.trim();
-            const err     = document.getElementById('contact-error');
-
-            if (!name || !email || !topic || !message) {
-                err.textContent = 'Please fill in all required fields before sending.';
-                return;
-            }
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                err.textContent = 'Please enter a valid email address.';
-                return;
-            }
-
-            err.textContent = '';
-            document.getElementById('contact-form').style.display = 'none';
-            document.getElementById('form-success').style.display = 'flex';
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'SELECT') {
-                handleContact();
-            }
-        });
-    </script>
-
 </body>
 </html>

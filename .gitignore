@@ -1,0 +1,8 @@
+# Local-only working checklist (not for submission / not tracked)
+PROJECT_CHECKLIST.local.md
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
