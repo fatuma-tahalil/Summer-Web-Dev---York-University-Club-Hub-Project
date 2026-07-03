@@ -685,6 +685,17 @@ body {
     font-size: 0.82rem;
 }
 
+.site-footer a {
+    color: #ff8fa3;
+    text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
 
 
 /* Clubs and club sign up */
@@ -1158,12 +1169,6 @@ details[open] .event-chevron {
 .signup-note span {
     flex: 1;
     min-width: 0;
-}
-
-.signup-note svg {
-    color: crimson;
-    flex-shrink: 0;
-    margin-top: 2px;
 }
 
 /* --- Fieldsets --------------------------------------------- */
