@@ -52,6 +52,7 @@ body {
 .navBoxes {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     padding-right: 15px;
 }
@@ -68,6 +69,40 @@ body {
 .navBoxes a:hover {
     background-color: crimson;
     color: white;
+}
+
+.navBoxes a:focus-visible {
+    outline: 3px solid #1a1a2e;
+    outline-offset: 2px;
+}
+
+/* Responsive header + navigation */
+@media (max-width: 768px) {
+    .middle-header-line {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .navBoxes {
+        justify-content: center;
+        gap: 8px;
+        padding-right: 0;
+    }
+
+    .navBoxes a {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .navBoxes a {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
 }
 
 /*Spesific to index formatting */
