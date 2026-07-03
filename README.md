@@ -24,6 +24,13 @@
 ## Credits
 
 - York University Logo © York University. Used with permission.
+- <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by Alfredo Hernandez - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/email" title="email icons">Email icons created by hqrloveq - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/timer" title="timer icons">Timer icons created by hqrloveq - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/red" title="red icons">Red icons created by hqrloveq - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/check-box" title="check box icons">Check box icons created by HideMaru - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Dwi ridwanto - Flaticon</a>
+- <a href="https://www.flaticon.com/free-icons/instagram-share" title="instagram share icons">Instagram share icons created by Uniconlabs - Flaticon</a>
 
 ## Summary of Phase 2 Improvements
 
