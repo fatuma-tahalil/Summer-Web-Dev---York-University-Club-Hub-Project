@@ -109,7 +109,7 @@ body {
 .mainWelcome {
     position: relative;
     width: 100%;
-    height: calc(100vh - 60px);
+    min-height: calc(100vh - 105px);
     background-color: #1a1a2e;
     display: flex;
     align-items: center;
@@ -169,6 +169,15 @@ body {
     background-color: transparent;
     border-color: #ffffff;
     color: #ffffff;
+}
+
+/* Home hero — mobile */
+@media (max-width: 768px) {
+    .mainWelcome {
+        min-height: auto;
+        padding: 72px 24px;
+        box-sizing: border-box;
+    }
 }
 
 /*Login Section*/
