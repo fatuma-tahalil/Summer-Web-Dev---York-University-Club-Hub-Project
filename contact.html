@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Club Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <div class="top-header-line"></div>
+
+    <div class="middle-header-line">
+        <div class="header-content">
+
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
+
+        </div>
+        <div class="navBoxes">
+            <a href="index.html">Home</a>
+            <a href="clubs.html">Explore Clubs</a>
+            <a href="club_events.html">Club Events</a>
+            <a href="club_signup.html">Club Sign Ups</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html" class="nav-signin">Sign In</a>
+        </div>
+    </div>
+
+    <div class="bottom-header-line"></div>
+
+    <!-- Contact main heading -->
+
+    <section class="contactHeadingSection">
+        <div class="contactGradient"></div>
+        <div class="contactHeadingContent">
+            <h1>Contact Us</h1>
+            <p>Have a question or feedback? We'd love to hear from you.</p>
+        </div>
+    </section>
+
+    <!-- Contact Body -->
+    <section class="contact-body">
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2 class="section-heading">Contact Information</h2>
+
+                <ul class="contact-details">
+                    <li>
+                        <span class="contact-icon">
+                            <img src="assets/mail.png" alt="" class="info-icon">
+                        </span>
+                        <span>Email: <a href="mailto:clubconnect@yorku.ca">clubconnect@yorku.ca</a></span>
+                    </li>
+                    <li>
+                        <span class="contact-icon">
+                            <img src="assets/gps.png" alt="" class="info-icon">
+                        </span>
+                        <span>Campus Office: Student Centre, York University</span>
+                    </li>
+                    <li>
+                        <span class="contact-icon">
+                            <img src="assets/clock.png" alt="" class="info-icon">
+                        </span>
+                        <span>Office Hours: Monday to Friday, 10:00 AM to 4:00 PM</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Right side of page-->
+            <div class="contact-form-wrapper">
+                <h2 class="section-heading" style="margin-bottom: 24px;">Send a Message</h2>
+
+                <div id="form-success" class="form-success" style="display:none;">
+                    <img src="assets/checked.png" alt="checked" class="submitted-icon">
+                    <h3>Message Sent!</h3>
+                    <p>Thanks for reaching out. We'll get back to you shortly.</p>
+                </div>
+
+                <div id="contact-form">
+                    <div class="form-group">
+
+                        <label for="contact-name">Name <span class="required">*</span></label>
+                        <input type="text" id="contact-name" placeholder="e.g. Jane Smith">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email <span class="required">*</span></label>
+                        <input type="email" id="contact-email" placeholder="e.g. name##@my.yorku.ca">
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contact-topic">Message Topic <span class="required">*</span></label>
+                        <select id="contact-topic" class="contact-select">
+
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="Club Listing">Club Listing</option>
+                            <option value="Event Posting">Event Posting</option>
+                            <option value="Membership Application">Membership Application</option>
+                            <option value="Feedback and Reviews">Feedback and Reviews</option>
+                            <option value="Account or Verification Help">Account or Verification Help</option>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message <span class="required">*</span></label>
+                        <textarea id="contact-message" rows="6" placeholder="Write your message here…"></textarea>
+                    </div>
+
+                    <p id="contact-error" class="login-error" aria-live="polite"></p>
+
+                    <button class="signin-btn contact-submit-btn" onclick="handleContact()">
+                        <img src="assets/send.png" alt="" aria-hidden="true" class="btn-icon">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
+        <p><a href="contact.html">Contact the ClubConnect team</a></p>
+    </footer>
+
+</body>
+</html>

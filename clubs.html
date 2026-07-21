@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Clubs — Club Finder</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <div class="top-header-line"></div>
+
+    <div class="middle-header-line">
+        <div class="header-content">
+
+            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
+            <div class="title">Club Finder</div>
+
+        </div>
+        <div class="navBoxes">
+
+            <a href="index.html">Home</a>
+            <a href="clubs.html">Explore Clubs</a>
+            <a href="club_events.html">Club Events</a>
+            <a href="club_signup.html">Club Sign Ups</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html" class="nav-signin">Sign In</a>
+
+        </div>
+    </div>
+
+    <div class="bottom-header-line"></div>
+
+    <!-- Clubs main heading -->
+    <section class="clubsHeadingSection">
+        <div class="contactGradient"></div>
+        <div class="contactHeadingContent">
+            <h1>Explore Clubs</h1>
+            <p>Find your community at York University.</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="clubs-search-section">
+        <div class="clubs-container">
+            <h2 class="section-heading">Search and Filter Clubs</h2>
+
+            <div class="clubs-filters">
+                <div class="filter-group">
+                    <label for="search-name">Search by Club Name</label>
+                    <input type="text" id="search-name" placeholder="Club name" oninput="filterClubs()">
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-category">Filter by Category</label>
+                    <select id="filter-category" class="contact-select" onchange="filterClubs()">
+                        <option value="">All categories</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                </div>
+
+                <div class="filter-group filter-btn-group">
+                    <button class="search-clubs-btn" onclick="filterClubs()">Search Clubs</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Club listings -->
+    <section class="clubs-listings-section">
+        <div class="clubs-container">
+            <h2 class="section-heading">Club Listings</h2>
+
+            <!-- Java Script will load the clubs here -->
+            <div id="clubs-list" class="clubs-list">
+            </div>
+
+            <p id="no-results" class="clubs-no-results" style="display:none;">
+                No clubs found matching your search.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
+        <p><a href="contact.html">Contact the ClubConnect team</a></p>
+        <script src="js/clubs.js"></script>
+    </footer>
+
+    <script>
+// Default clubs
+        const defaultClubs = [
+            { name: "York Computer Science Society",      category: "Technology", description: "A hub for CS students to collaborate, code, and grow professionally." },
+            { name: "York Debate Club",                   category: "Academic",   description: "Sharpen your argumentation and public speaking skills." },
+            { name: "African Students Association",       category: "Cultural",   description: "Celebrating African heritage, culture, and community at York." },
+            { name: "York Robotics Club",                 category: "Technology", description: "Design, build, and program robots with fellow engineers." },
+            { name: "York Soccer Club",                   category: "Sports",     description: "Casual and competitive soccer for all skill levels." },
+            { name: "Film & Photography Society",         category: "Arts",       description: "Explore visual storytelling through film and photography." },
+            { name: "South Asian Students Alliance",      category: "Cultural",   description: "Building community and celebrating South Asian culture on campus." },
+            { name: "York Pre-Law Society",               category: "Academic",   description: "Helping aspiring lawyers prepare for law school and legal careers." },
+            { name: "York Basketball Association",        category: "Sports",     description: "Join weekly pick-up games and inter-club tournaments." },
+            { name: "York Fine Arts Collective",          category: "Arts",       description: "A space for painters, sculptors, and visual artists to create." },
+        ];
+
+        // Load from local storage or use defaults
+        let clubs = JSON.parse(localStorage.getItem('yorkClubsData'));
+        if (!clubs) {
+            clubs = defaultClubs;
+            localStorage.setItem('yorkClubsData', JSON.stringify(clubs));
+        }
+
+        function getInitials(name) {
+            return name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+        }
+
+        const categoryColors = {
+            Academic:   '#2c5f8a',
+            Cultural:   '#7b3f9e',
+            Sports:     '#1a7a4a',
+            Technology: '#b35c00',
+            Arts:       '#a0002a',
+        };
+
+        function renderClubs(list) {
+            const container = document.getElementById('clubs-list');
+            const noResults = document.getElementById('no-results');
+
+            if (list.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            noResults.style.display = 'none';
+            container.innerHTML = list.map(club => {
+                const color = categoryColors[club.category] || 'crimson';
+                const initials = getInitials(club.name);
+                return `
+                <div class="club-card">
+                    <div class="club-logo-placeholder" style="background-color:${color}">${initials}</div>
+                    <div class="club-info">
+                        <div class="club-card-top">
+                            <h3 class="club-name">${club.name}</h3>
+                            <span class="club-category" style="background-color:${color}">${club.category}</span>
+                        </div>
+                        <p class="club-description">${club.description}</p>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function filterClubs() {
+            const nameQuery = document.getElementById('search-name').value.trim().toLowerCase();
+            const catQuery  = document.getElementById('filter-category').value;
+
+            const filtered = clubs.filter(club => {
+                const matchName = club.name.toLowerCase().includes(nameQuery);
+                const matchCat  = catQuery === '' || club.category === catQuery;
+                return matchName && matchCat;
+            });
+
+            renderClubs(filtered);
+        }
+
+        // ADMIN LOGIC: Check if user is admin and inject the form
+        function setupAdminFeatures() {
+            const isAdmin = localStorage.getItem('isAdmin') === 'true';
+            if (!isAdmin) return; // Exit if not admin
+
+            // Create the admin form
+            const adminSection = document.createElement('div');
+            adminSection.className = 'clubs-container';
+            adminSection.style.marginTop = '20px';
+            adminSection.style.padding = '20px';
+            adminSection.style.backgroundColor = '#f9f9f9';
+            adminSection.style.border = '2px dashed #e31837'; // York Red
+
+            // Admins can choose from existing categories[cite: 2]
+            adminSection.innerHTML = `
+                <h2 style="color: #e31837;">Admin Panel: Add New Club</h2>
+                <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                    <input type="text" id="new-club-name" placeholder="Club Name" style="padding: 8px;">
+                    <select id="new-club-category" style="padding: 8px;">
+                        <option value="Academic">Academic</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Arts">Arts</option>
+                    </select>
+                    <input type="text" id="new-club-desc" placeholder="Club Description" style="padding: 8px; flex-grow: 1;">
+                    <button onclick="addNewClub()" style="background: #e31837; color: white; padding: 8px 16px; border: none; cursor: pointer;">Add Club</button>
+                    <button onclick="logoutAdmin()" style="background: #333; color: white; padding: 8px 16px; border: none; cursor: pointer;">Log Out</button>
+                </div>
+            `;
+
+            // Insert it right after the search section
+            const searchSection = document.querySelector('.clubs-search-section');
+            searchSection.parentNode.insertBefore(adminSection, searchSection.nextSibling);
+        }
+
+        function addNewClub() {
+            const name = document.getElementById('new-club-name').value.trim();
+            const category = document.getElementById('new-club-category').value;
+            const description = document.getElementById('new-club-desc').value.trim();
+
+            if (!name || !description) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            // Add to array, save to storage, and re-render
+            clubs.push({ name, category, description });
+            localStorage.setItem('yorkClubsData', JSON.stringify(clubs));
+
+            // Clear inputs
+            document.getElementById('new-club-name').value = '';
+            document.getElementById('new-club-desc').value = '';
+
+            filterClubs(); // Re-render list
+            alert("Club added successfully!");
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem('isAdmin');
+            location.reload();
+        }
+
+        // Initial render
+        renderClubs(clubs);
+        setupAdminFeatures();
+    </script>
+
+</body>
+</html>
