@@ -76,7 +76,3 @@ replaces the form on success.
 
 **Optional features:** club and event data persist in `localStorage`,
 allowing an admin to add and remove records across sessions.
-
-> **Note:** the Sign In page is a client-side demonstration only. The
-> admin check exists to show conditional rendering and is not real
-> authentication.
