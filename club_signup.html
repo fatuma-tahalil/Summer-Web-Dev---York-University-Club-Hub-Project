@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club Sign Ups — Club Finder</title>
     <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body>
@@ -30,7 +27,6 @@
             <a href="contact.html">Contact Us</a>
             <a href="login.html" class="nav-signin">Sign In</a>
         </div>
-
     </div>
 
     <div class="bottom-header-line"></div>
@@ -81,17 +77,15 @@
                 </div>
             </div>
 
-
             <div class="contact-form-wrapper">
 
-                <!-- Success submission of form -->
                 <div id="form-success" class="form-success" style="display:none;">
                     <img src="assets/checked.png" alt="checked" class="submitted-icon">
                     <h3>Application Submitted!</h3>
                     <p>Thanks for signing up. A club executive will contact you at your York email shortly.</p>
                 </div>
 
-                <div id="signup-form">
+                <form id="signup-form">
                     <h2 class="section-heading" style="margin-bottom:28px;">Club Sign-Up Form</h2>
 
                     <!-- Club Information  -->
@@ -100,7 +94,7 @@
 
                         <div class="form-group">
                             <label for="club-name">Club Name <span class="required">*</span></label>
-                            <select id="club-name" class="contact-select">
+                            <select id="club-name" class="contact-select" required>
                                 <option value="" disabled selected>Select a club</option>
                                 <option value="York Computer Science Society">York Computer Science Society</option>
                                 <option value="York Debate Club">York Debate Club</option>
@@ -117,7 +111,7 @@
 
                         <div class="form-group">
                             <label for="club-category">Club Category <span class="required">*</span></label>
-                            <select id="club-category" class="contact-select">
+                            <select id="club-category" class="contact-select" required>
                                 <option value="" disabled selected>Select a category</option>
                                 <option value="Academic">Academic</option>
                                 <option value="Cultural">Cultural</option>
@@ -139,22 +133,22 @@
 
                         <div class="form-group">
                             <label for="student-name">Student Name <span class="required">*</span></label>
-                            <input type="text" id="student-name" placeholder="e.g. Jane Smith">
+                            <input type="text" id="student-name" placeholder="e.g. Jane Smith" required>
                         </div>
 
                         <div class="form-group">
                             <label for="student-id">Student ID <span class="required">*</span></label>
-                            <input type="text" id="student-id" placeholder="e.g. 220123456">
+                            <input type="text" id="student-id" placeholder="e.g. 220123456" required>
                         </div>
 
                         <div class="form-group">
                             <label for="student-email">York University Email <span class="required">*</span></label>
-                            <input type="email" id="student-email" placeholder="name@my.yorku.ca">
+                            <input type="email" id="student-email" placeholder="name@my.yorku.ca" required>
                         </div>
 
                         <div class="form-group">
                             <label for="student-year">Year of Study <span class="required">*</span></label>
-                            <select id="student-year" class="contact-select">
+                            <select id="student-year" class="contact-select" required>
                                 <option value="" disabled selected>Select year</option>
                                 <option value="1">1st Year</option>
                                 <option value="2">2nd Year</option>
@@ -166,17 +160,17 @@
 
                         <div class="form-group">
                             <label for="student-reason">Why do you want to join this club? <span class="required">*</span></label>
-                            <textarea id="student-reason" rows="5" placeholder="Tell the club why you'd like to join and what you hope to contribute…"></textarea>
+                            <textarea id="student-reason" rows="5" placeholder="Tell the club why you'd like to join and what you hope to contribute…" required></textarea>
                         </div>
                     </fieldset>
 
                     <p id="signup-error" class="login-error" aria-live="polite"></p>
 
-                    <button class="signin-btn" onclick="handleSignUp()">
+                    <button type="submit" id="submit-btn" class="signin-btn">
                         <img src="assets/checked-circle.png" alt="" class="btn-icon" aria-hidden="true">
                         Submit Sign Up
                     </button>
-                </div>
+                </form>
 
             </div>
         </div>
@@ -186,6 +180,7 @@
     <footer class="site-footer">
         <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
         <p><a href="contact.html">Contact the ClubConnect team</a></p>
+        <script src="js/signup.js"></script>
     </footer>
 
 </body>
