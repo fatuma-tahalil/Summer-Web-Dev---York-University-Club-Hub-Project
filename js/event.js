@@ -1,4 +1,3 @@
-// Basic events to start with
 const defaultEvents = [
 
     { name: "Intro to Machine Learning Workshop", category: "Technology", club: "York Computer Science Society", date: "June 14, 2026", time: "2:00 PM – 5:00 PM", location: "Lassonde Building, Room 1006", description: "A hands-on beginner workshop covering Python, scikit-learn, and building your first ML model. Laptops required. All skill levels welcome.", poster: "ML" },
@@ -12,7 +11,6 @@ const defaultEvents = [
 
 ];
 
-// Load the events from local so we can add and remove any events as needed
 let events = JSON.parse(localStorage.getItem('yorkEventsData'));
 if (!events) {
     events = defaultEvents;
@@ -20,14 +18,13 @@ if (!events) {
 }
 
 const categoryColors = {
-    Academic:   '#2c5f8a',
-    Cultural:   '#7b3f9e',
-    Sports:     '#1a7a4a',
+    Academic: '#2c5f8a',
+    Cultural: '#7b3f9e',
+    Sports: '#1a7a4a',
     Technology: '#b35c00',
-    Arts:       '#a0002a',
+    Arts: '#a0002a',
 };
 
-// Get the events list to populate the events onto the page
 function renderEvents(list) {
 
     const container = document.getElementById('events-list');
@@ -50,7 +47,6 @@ function renderEvents(list) {
 
         const color = categoryColors[ev.category] || 'crimson';
 
-        // Add delete button ONLY if admin
         const deleteButtonHTML = isAdmin
 
             ? `<button class="event-btn" style="background-color: #e31837; border-color: #e31837;" onclick="deleteEvent(\`${ev.name}\`)">Delete Event</button>`
@@ -100,11 +96,11 @@ function renderEvents(list) {
 function filterEvents() {
 
     const nameQuery = document.getElementById('event-search').value.trim().toLowerCase();
-    const catQuery  = document.getElementById('event-filter').value;
+    const catQuery = document.getElementById('event-filter').value;
 
     const filtered = events.filter(ev => {
         const matchName = ev.name.toLowerCase().includes(nameQuery);
-        const matchCat  = catQuery === '' || ev.category === catQuery;
+        const matchCat = catQuery === '' || ev.category === catQuery;
         return matchName && matchCat;
 
     });
@@ -120,7 +116,6 @@ function handleUpdates(name) {
     alert(`You'll receive updates for:\n"${name}"`);
 }
 
-// Admin Add & Delete Logic
 function setupEventAdminFeatures() {
     const isAdmin = localStorage.getItem('isAdmin') === 'true';
     if (!isAdmin) return;
@@ -198,6 +193,5 @@ function logoutAdmin() {
     location.reload();
 }
 
-// Initial render
 renderEvents(events);
 setupEventAdminFeatures();

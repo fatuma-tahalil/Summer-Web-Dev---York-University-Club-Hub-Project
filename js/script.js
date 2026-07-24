@@ -10,14 +10,11 @@ function handleLogin() {
         return;
     }
 
-    // Set your admin password here
     const ADMIN_PASSWORD = "YorkAdmin2026!";
 
     if (passwordInput === ADMIN_PASSWORD) {
-        // Grant admin access
         localStorage.setItem('isAdmin', 'true');
 
-        // Redirect to the Explore Clubs page or Home
         window.location.href = 'clubs.html';
     } else {
         errorElement.textContent = 'Invalid credentials. Please try again.';
