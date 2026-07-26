@@ -31,6 +31,7 @@
 - <a href="https://www.flaticon.com/free-icons/check-box" title="check box icons">Check box icons created by HideMaru - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/info" title="info icons">Info icons created by Dwi ridwanto - Flaticon</a>
 - <a href="https://www.flaticon.com/free-icons/instagram-share" title="instagram share icons">Instagram share icons created by Uniconlabs - Flaticon</a>
+- “Arrow Upward” icon from [Google Material Symbols](https://fonts.google.com/icons)
 
 ## Summary of Phase 2 Improvements
 

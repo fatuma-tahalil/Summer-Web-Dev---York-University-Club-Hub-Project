@@ -288,6 +288,35 @@ img {
     border-color: crimson;
 }
 
+.password-field {
+    position: relative;
+}
+
+.password-field input {
+    padding-right: 8.5rem;
+}
+
+#capslock-state {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #a00020;
+    font-size: 0.75rem;
+    pointer-events: none;
+}
+
+#capslock-state[hidden] {
+    display: none;
+}
+
+#capslock-state img {
+    width: 1rem;
+    height: 1rem;
+}
+
 /*Sign in section*/
 .signin-btn {
     display: flex;
