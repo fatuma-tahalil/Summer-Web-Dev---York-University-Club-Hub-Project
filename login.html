@@ -1,89 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In — Club Finder</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="js/login.js" defer></script>
     <script src="js/auth-nav.js" defer></script>
-</head>
+  </head>
 
-
-<body>
-
+  <body>
     <div class="top-header-line"></div>
 
     <div class="middle-header-line">
-        <div class="header-content">
-
-            <img src="assets/York_Logo.png" class="logo" alt="York University Logo">
-            <div class="title">Club Finder</div>
-
-        </div>
-        <div class="navBoxes">
-
-            <a href="index.html">Home</a>
-            <a href="clubs.html">Explore Clubs</a>
-            <a href="club_events.html">Club Events</a>
-            <a href="club_signup.html">Club Sign Ups</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="login.html" class="nav-signin" id="nav-signin">Sign In</a>
-
-        </div>
+      <div class="header-content">
+        <img
+          src="assets/York_Logo.png"
+          class="logo"
+          alt="York University Logo"
+        />
+        <div class="title">Club Finder</div>
+      </div>
+      <div class="navBoxes">
+        <a href="index.html">Home</a>
+        <a href="clubs.html">Explore Clubs</a>
+        <a href="club_events.html">Club Events</a>
+        <a href="club_signup.html">Club Sign Ups</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="login.html" class="nav-signin" id="nav-signin">Sign In</a>
+      </div>
     </div>
 
     <div class="bottom-header-line"></div>
 
     <!-- Login Section Main Content -->
     <div class="login-page">
+      <div class="login-overlay"></div>
 
-        <div class="login-overlay"></div>
+      <div class="login-card">
+        <img
+          src="assets/York_Logo.png"
+          alt="York University Logo"
+          class="login-logo"
+        />
+        <h1 class="login-heading">Club Finder</h1>
+        <p class="login-sub">Sign in with your York University credentials</p>
 
-        <div class="login-card">
-            <img src="assets/York_Logo.png" alt="York University Logo" class="login-logo">
-            <h1 class="login-heading">Club Finder</h1>
-            <p class="login-sub">Sign in with your York University credentials</p>
+        <form class="login-form" id="login-form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="email"
+              id="username"
+              placeholder="ex. name@my.yorku.ca"
+              pattern="[A-Za-z0-9._%+-]+@(my\.)?yorku\.ca"
+              title="Enter a valid @my.yorku.ca or @yorku.ca email address"
+              required
+            />
+          </div>
+          <div class="form-group password-field">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              required
+            />
+            <span id="capslock-state" hidden>
+              <img src="assets/arrow_upward.svg" alt="" />
+            </span>
+          </div>
 
-            <form class="login-form" id="login-form">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input
-                    type="email"
-                    id="username"
-                    placeholder="ex. name@my.yorku.ca"
-                    pattern="[A-Za-z0-9._%+-]+@(my\.)?yorku\.ca"
-                    title="Enter a valid @my.yorku.ca or @yorku.ca email address"
-                    required>
-                </div>
-                <div class="form-group password-field">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="••••••••" required>
-                    <span id="capslock-state" hidden>
-                        <img src="assets/arrow_upward.svg" alt="">
-                    </span>
-                </div>
+          <button type="submit" class="signin-btn" id="signInButton">
+            <!-- Login arrow icon -->
+            <img
+              src="assets/Enter_Button.png"
+              alt=""
+              aria-hidden="true"
+              class="btn-icon"
+            />
+            Sign In
+          </button>
 
-                <button type="submit" class="signin-btn" id="signInButton">
-                    <!-- Login arrow icon -->
-                    <img src="assets/Enter_Button.png" alt="" aria-hidden="true" class="btn-icon">
-                    Sign In
-                </button>
-
-                <p id="login-error" class="login-error" aria-live="polite"></p>
-            </form>
-
-        </div>
+          <p id="login-error" class="login-error" aria-live="polite"></p>
+        </form>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
-        <p><a href="contact.html">Contact the ClubConnect team</a></p>
+      <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
+      <p><a href="contact.html">Contact the ClubConnect team</a></p>
     </footer>
-
-</body>
+  </body>
 </html>
