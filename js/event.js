@@ -90,6 +90,7 @@ const defaultEvents = [
 ];
 
 function loadEvents() {
+  // Fall back to the default list if saved browser data is missing or invalid
   try {
     const savedEvents = JSON.parse(localStorage.getItem("yorkEventsData"));
     if (Array.isArray(savedEvents)) {
@@ -122,6 +123,7 @@ eventSearchInput.addEventListener("input", filterEvents);
 eventCategorySelect.addEventListener("change", filterEvents);
 eventSearchButton.addEventListener("click", filterEvents);
 eventsList.addEventListener("click", function (event) {
+  // One listener handles buttons created whenever the event list is rendered.
   const actionButton = event.target.closest("[data-event-action]");
   if (!actionButton) return;
 
@@ -166,11 +168,11 @@ function renderEvents(list) {
                 <summary class="event-summary">
                     <div class="event-poster-placeholder" style="background-color:${color}">${ev.poster}</div>
                     <div class="event-summary-info">
-                    
+
                         <span class="event-summary-name">${ev.name}</span>
                         <span class="event-summary-meta">${ev.date} &bull; ${ev.club}</span>
                     </div>
-                    
+
                     <span class="event-category-badge" style="background-color:${color}">${ev.category}</span>
                     <span class="event-chevron">&#9654;</span>
                 </summary>
@@ -178,21 +180,21 @@ function renderEvents(list) {
                 <div class="event-details">
                     <h3>Event Details</h3>
                     <ul class="event-meta-list">
-                    
+
                         <li><strong>Date:</strong> ${ev.date}</li>
                         <li><strong>Time:</strong> ${ev.time}</li>
                         <li><strong>Location:</strong> ${ev.location}</li>
                         <li><strong>Hosted by:</strong> ${ev.club}</li>
-                        
+
                     </ul>
                     <p class="event-desc">${ev.description}</p>
-                    
+
                     <div class="event-actions">
-                    
+
                         <button type="button" class="event-btn event-btn-primary" data-event-action="signup" data-event-name="${encodeURIComponent(ev.name)}">Sign Up</button>
                         <button type="button" class="event-btn event-btn-secondary" data-event-action="updates" data-event-name="${encodeURIComponent(ev.name)}">Get Updates</button>
                         ${deleteButtonHTML}
-                        
+
                     </div>
                 </div>
             </details>

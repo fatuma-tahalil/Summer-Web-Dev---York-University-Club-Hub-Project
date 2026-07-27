@@ -60,6 +60,7 @@ const defaultClubs = [
 // Load from local storage or use defaults
 // We load from storage to allow for local admin changes to club data
 function loadClubs() {
+  // Fall back to the default list if saved browser data is missing or invalid
   try {
     const savedClubs = JSON.parse(localStorage.getItem("yorkClubsData"));
     if (Array.isArray(savedClubs)) {
