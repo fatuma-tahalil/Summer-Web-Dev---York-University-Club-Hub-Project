@@ -33,6 +33,12 @@
 - <a href="https://www.flaticon.com/free-icons/instagram-share" title="instagram share icons">Instagram share icons created by Uniconlabs - Flaticon</a>
 - “Arrow Upward” icon from [Google Material Symbols](https://fonts.google.com/icons)
 
+## Summary of Phase 1 Structure
+
+Phase 1 established the seven-page website structure, shared navigation,
+semantic page sections, club and event content, and the sign-in, club sign-up,
+and contact forms.
+
 ## Summary of Phase 2 Improvements
 
 Phase 2 focused on styling, layout, and responsiveness. Key improvements:
@@ -46,34 +52,35 @@ Phase 2 focused on styling, layout, and responsiveness. Key improvements:
 
 ## Summary of Phase 3 JavaScript Functionality
 
-Phase 3 added interactive behaviour using five JavaScript files in the
-`js/` folder:
+Phase 3 added interactive behaviour using six page-specific and shared
+JavaScript files in the `js/` folder:
 
 - **`clubs.js`** — renders club cards dynamically from a data array,
   with live search-by-name and category filtering that update the DOM
   as the user types.
 - **`event.js`** — renders expandable event listings with the same
-  search and filter behaviour, plus sign-up and update actions.
+  search and filter behaviour, plus on-page sign-up and update feedback.
 - **`signup.js`** — populates the club dropdown dynamically, auto-fills
-  category and description on selection, and validates the sign-up form
-  (York email domain, numeric student ID) before submission.
-- **`contact.js`** — validates the contact form and submits it
-  asynchronously, showing an on-page success panel.
-- **`script.js`** — handles the demonstration sign-in that reveals the
-  admin panel.
+  its read-only category, tracks the 250-character limit, requires login,
+  and shows an on-page confirmation after valid submission.
+- **`contact.js`** — requires login and shows inline error or success
+  feedback for the contact form without sending data to an external service.
+- **`login.js`** — handles the demonstration sign-in, York email format,
+  admin mode, and Caps Lock indicator.
+- **`auth-nav.js`** — updates the shared navigation between Sign In and
+  Sign Out and clears authentication data on sign-out.
 
 **DOM manipulation:** `getElementById`, `querySelector`, `createElement`,
 `appendChild`, `innerHTML`, `textContent`, and attribute/style changes.
 
-**Event handling:** `DOMContentLoaded`, `submit`, `change`, `input`, and
-`click` listeners registered with `addEventListener()`, using
+**Event handling:** `submit`, `change`, `input`, `click`, and keyboard
+listeners registered with `addEventListener()`, using
 `event.preventDefault()` to validate before submission.
 
-**Validation:** the sign-up and contact forms both check for a valid
-`@my.yorku.ca` or `@yorku.ca` address; the sign-up form additionally
-uses a regular expression to confirm the student ID is numeric. Errors
-appear in a message area beside the form, and a confirmation panel
-replaces the form on success.
+**Validation:** the sign-in form requires a valid `@my.yorku.ca` or
+`@yorku.ca` address and a password. Club sign-up and contact actions require
+an authenticated user and complete required fields. Errors appear inline,
+and confirmation panels replace successfully completed forms.
 
 **Optional features:** club and event data persist in `localStorage`,
 allowing an admin to add and remove records across sessions.

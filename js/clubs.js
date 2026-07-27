@@ -59,11 +59,21 @@ const defaultClubs = [
 
 // Load from local storage or use defaults
 // We load from storage to allow for local admin changes to club data
-let clubs = JSON.parse(localStorage.getItem("yorkClubsData"));
-if (!clubs) {
-  clubs = defaultClubs;
-  localStorage.setItem("yorkClubsData", JSON.stringify(clubs));
+function loadClubs() {
+  try {
+    const savedClubs = JSON.parse(localStorage.getItem("yorkClubsData"));
+    if (Array.isArray(savedClubs)) {
+      return savedClubs;
+    }
+  } catch {
+    localStorage.removeItem("yorkClubsData");
+  }
+
+  localStorage.setItem("yorkClubsData", JSON.stringify(defaultClubs));
+  return defaultClubs;
 }
+
+let clubs = loadClubs();
 
 function getInitials(name) {
   return name
@@ -166,18 +176,18 @@ function setupAdminFeatures() {
   adminSection.innerHTML = `
         <h2 style="color: #e31837;">Admin Panel: Add New Club</h2>
         <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
-            <input type="text" id="new-club-name" placeholder="Club Name" style="padding: 8px;">
-            <select id="new-club-category" style="padding: 8px;">
+            <input type="text" id="new-club-name" aria-label="Club name" placeholder="Club Name" style="padding: 8px;">
+            <select id="new-club-category" aria-label="Club category" style="padding: 8px;">
                 <option value="Academic">Academic</option>
                 <option value="Cultural">Cultural</option>
                 <option value="Sports">Sports</option>
                 <option value="Technology">Technology</option>
                 <option value="Arts">Arts</option>
             </select>
-            <input type="text" id="new-club-desc" placeholder="Club Description" style="padding: 8px; flex-grow: 1;">
+            <input type="text" id="new-club-desc" aria-label="Club description" placeholder="Club Description" style="padding: 8px; flex-grow: 1;">
             <button type="button" id="add-club-button" style="background: #e31837; color: white; padding: 8px 16px; border: none; cursor: pointer;">Add Club</button>
-            <button type="button" id="exit-admin-button" style="background: #333; color: white; padding: 8px 16px; border: none; cursor: pointer;">Log Out</button>
         </div>
+        <p id="club-admin-status" class="interaction-status" aria-live="polite"></p>
     `;
 
   const searchSection = document.querySelector(".clubs-search-section");
@@ -189,9 +199,12 @@ function setupAdminFeatures() {
   document
     .getElementById("add-club-button")
     .addEventListener("click", addNewClub);
-  document
-    .getElementById("exit-admin-button")
-    .addEventListener("click", exitAdminMode);
+}
+
+function showClubAdminStatus(message, isError = false) {
+  const statusElement = document.getElementById("club-admin-status");
+  statusElement.textContent = message;
+  statusElement.dataset.state = isError ? "error" : "success";
 }
 
 function addNewClub() {
@@ -200,7 +213,7 @@ function addNewClub() {
   const description = document.getElementById("new-club-desc").value.trim();
 
   if (!name || !description) {
-    alert("Please fill out all fields.");
+    showClubAdminStatus("Error: Enter a club name and description.", true);
     return;
   }
 
@@ -212,7 +225,7 @@ function addNewClub() {
   document.getElementById("new-club-desc").value = "";
 
   filterClubs();
-  alert("Club added successfully!");
+  showClubAdminStatus("Success: Club added.");
 }
 
 function deleteClub(clubName) {
@@ -220,11 +233,7 @@ function deleteClub(clubName) {
   clubs = clubs.filter((club) => club.name !== clubName);
   localStorage.setItem("yorkClubsData", JSON.stringify(clubs));
   filterClubs();
-}
-
-function exitAdminMode() {
-  localStorage.removeItem("isAdmin");
-  location.reload();
+  showClubAdminStatus("Success: Club deleted.");
 }
 
 // Initial render

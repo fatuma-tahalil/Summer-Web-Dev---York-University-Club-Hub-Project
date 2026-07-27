@@ -89,11 +89,21 @@ const defaultEvents = [
   },
 ];
 
-let events = JSON.parse(localStorage.getItem("yorkEventsData"));
-if (!events) {
-  events = defaultEvents;
-  localStorage.setItem("yorkEventsData", JSON.stringify(events));
+function loadEvents() {
+  try {
+    const savedEvents = JSON.parse(localStorage.getItem("yorkEventsData"));
+    if (Array.isArray(savedEvents)) {
+      return savedEvents;
+    }
+  } catch {
+    localStorage.removeItem("yorkEventsData");
+  }
+
+  localStorage.setItem("yorkEventsData", JSON.stringify(defaultEvents));
+  return defaultEvents;
 }
+
+let events = loadEvents();
 
 const categoryColors = {
   Academic: "#2c5f8a",
@@ -207,14 +217,32 @@ function filterEvents() {
   renderEvents(filtered);
 }
 
+function showEventStatus(message, isError = false) {
+  const statusElement = document.getElementById("event-status");
+  statusElement.textContent = message;
+  statusElement.dataset.state = isError ? "error" : "success";
+}
+
 function handleSignUp(name) {
-  alert(
-    `You've signed up for:\n"${name}"\n\nYou'll receive a confirmation shortly.`,
-  );
+  const isEventUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  if (!isEventUserLoggedIn) {
+    showEventStatus("Error: Please sign in before joining an event.", true);
+    return;
+  }
+
+  showEventStatus(`Success: You signed up for "${name}".`);
 }
 
 function handleUpdates(name) {
-  alert(`You'll receive updates for:\n"${name}"`);
+  const isEventUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  if (!isEventUserLoggedIn) {
+    showEventStatus("Error: Please sign in before requesting updates.", true);
+    return;
+  }
+
+  showEventStatus(`Success: Updates enabled for "${name}".`);
 }
 
 function setupEventAdminFeatures() {
@@ -232,25 +260,26 @@ function setupEventAdminFeatures() {
         <h2 style="color: #e31837;">Admin Panel: Add New Event</h2>
         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="text" id="new-ev-name" placeholder="Event Name" style="padding: 8px; flex-grow: 1;">
-                <select id="new-ev-category" style="padding: 8px;">
+                <input type="text" id="new-ev-name" aria-label="Event name" placeholder="Event Name" style="padding: 8px; flex-grow: 1;">
+                <select id="new-ev-category" aria-label="Event category" style="padding: 8px;">
                     <option value="Academic">Academic</option>
                     <option value="Cultural">Cultural</option>
                     <option value="Sports">Sports</option>
                     <option value="Technology">Technology</option>
                     <option value="Arts">Arts</option>
                 </select>
-                <input type="text" id="new-ev-club" placeholder="Hosting Club" style="padding: 8px;">
+                <input type="text" id="new-ev-club" aria-label="Hosting club" placeholder="Hosting Club" style="padding: 8px;">
             </div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <input type="text" id="new-ev-date" placeholder="Date (e.g., Aug 10, 2026)" style="padding: 8px;">
-                <input type="text" id="new-ev-time" placeholder="Time (e.g., 2:00 PM)" style="padding: 8px;">
-                <input type="text" id="new-ev-loc" placeholder="Location" style="padding: 8px; flex-grow: 1;">
+                <input type="text" id="new-ev-date" aria-label="Event date" placeholder="Date (e.g., Aug 10, 2026)" style="padding: 8px;">
+                <input type="text" id="new-ev-time" aria-label="Event time" placeholder="Time (e.g., 2:00 PM)" style="padding: 8px;">
+                <input type="text" id="new-ev-loc" aria-label="Event location" placeholder="Location" style="padding: 8px; flex-grow: 1;">
             </div>
-            <input type="text" id="new-ev-desc" placeholder="Event Description" style="padding: 8px;">
+            <input type="text" id="new-ev-desc" aria-label="Event description" placeholder="Event Description" style="padding: 8px;">
             <div style="display: flex; gap: 10px;">
                 <button type="button" id="add-event-button" style="background: #e31837; color: white; padding: 8px 16px; border: none; cursor: pointer;">Add Event</button>
             </div>
+            <p id="event-admin-status" class="interaction-status" aria-live="polite"></p>
         </div>
     `;
 
@@ -265,6 +294,12 @@ function setupEventAdminFeatures() {
     .addEventListener("click", addNewEvent);
 }
 
+function showEventAdminStatus(message, isError = false) {
+  const statusElement = document.getElementById("event-admin-status");
+  statusElement.textContent = message;
+  statusElement.dataset.state = isError ? "error" : "success";
+}
+
 function addNewEvent() {
   const name = document.getElementById("new-ev-name").value.trim();
   const category = document.getElementById("new-ev-category").value;
@@ -275,7 +310,7 @@ function addNewEvent() {
   const description = document.getElementById("new-ev-desc").value.trim();
 
   if (!name || !club || !date || !time || !location || !description) {
-    alert("Please fill out all fields.");
+    showEventAdminStatus("Error: Complete every event field.", true);
     return;
   }
 
@@ -299,7 +334,7 @@ function addNewEvent() {
   localStorage.setItem("yorkEventsData", JSON.stringify(events));
 
   filterEvents();
-  alert("Event added successfully!");
+  showEventAdminStatus("Success: Event added.");
 }
 
 function deleteEvent(eventName) {
@@ -308,6 +343,7 @@ function deleteEvent(eventName) {
   events = events.filter((ev) => ev.name !== eventName);
   localStorage.setItem("yorkEventsData", JSON.stringify(events));
   filterEvents();
+  showEventAdminStatus("Success: Event deleted.");
 }
 
 renderEvents(events);

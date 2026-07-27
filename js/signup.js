@@ -1,12 +1,7 @@
-function isSignupUserAuthenticated() {
-  const isSignupUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-  const loggedInEmail = localStorage.getItem("loggedInEmail");
-
-  return isSignupUserLoggedIn && Boolean(loggedInEmail);
-}
+const isSignupUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
 function updateSignupLoginWarning(errorElement) {
-  if (!isSignupUserAuthenticated()) {
+  if (!isSignupUserLoggedIn) {
     errorElement.textContent =
       "Please sign in before submitting a club application.";
     return false;
@@ -81,7 +76,8 @@ function getAvailableClubs() {
   }
 
   try {
-    return JSON.parse(storedClubs);
+    const clubs = JSON.parse(storedClubs);
+    return Array.isArray(clubs) ? clubs : defaultClubs;
   } catch {
     return defaultClubs;
   }
@@ -115,33 +111,6 @@ function updateReasonCharacterCount(reasonInput, characterCount) {
   characterCount.textContent = `${reasonInput.value.length} / 250`;
 }
 
-function buildSignupParameters() {
-  const parameters = new URLSearchParams();
-
-  parameters.append("clubName", document.getElementById("club-name").value);
-  parameters.append(
-    "clubCategory",
-    document.getElementById("club-category").value,
-  );
-  parameters.append(
-    "reasonToJoin",
-    document.getElementById("join-reason").value,
-  );
-  parameters.append("email", localStorage.getItem("loggedInEmail"));
-
-  return parameters;
-}
-
-function setSignupSubmitting(submitButton) {
-  submitButton.disabled = true;
-  submitButton.textContent = "Submitting...";
-}
-
-function restoreSignupButton(submitButton, originalButtonContent) {
-  submitButton.disabled = false;
-  submitButton.innerHTML = originalButtonContent;
-}
-
 function showSignupSuccess(signupForm) {
   signupForm.style.display = "none";
   document.getElementById("form-success").style.display = "block";
@@ -151,53 +120,23 @@ function showSignupSuccess(signupForm) {
     .scrollIntoView({ behavior: "smooth" });
 }
 
-async function submitSignupForm(event) {
+function submitSignupForm(event) {
   event.preventDefault();
 
   const signupForm = event.currentTarget;
-  const submitButton = document.getElementById("submit-btn");
   const errorElement = document.getElementById("signup-error");
 
   if (!updateSignupLoginWarning(errorElement)) {
     return;
   }
 
-  const originalButtonContent = submitButton.innerHTML;
-  const webAppUrl =
-    "https://script.google.com/macros/s/AKfycbxREMLz1EpU2Q1TObM91v238BTFfZvzQ3nZ3LIV08k6IHQkWcWe9Z0_DKSdXspcqOi1/exec";
-
   errorElement.textContent = "";
-  setSignupSubmitting(submitButton);
-
-  try {
-    const response = await fetch(webAppUrl, {
-      method: "POST",
-      body: buildSignupParameters(),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Server responded with status ${response.status}`);
-    }
-
-    const data = await response.json();
-    if (data.result !== "success") {
-      throw new Error(data.message || "Unknown server error");
-    }
-
-    showSignupSuccess(signupForm);
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    errorElement.textContent =
-      "There was an error submitting your form. Please try again.";
-    restoreSignupButton(submitButton, originalButtonContent);
-  }
+  showSignupSuccess(signupForm);
 }
 
 function initializeSignupPage() {
   const signupForm = document.getElementById("signup-form");
   const clubSelect = document.getElementById("club-name");
-  const submitButton = document.getElementById("submit-btn");
-  const errorElement = document.getElementById("signup-error");
   const reasonInput = document.getElementById("join-reason");
   const characterCount = document.getElementById("join-reason-count");
   const clubs = getAvailableClubs();
@@ -210,10 +149,6 @@ function initializeSignupPage() {
 
   reasonInput.addEventListener("input", function () {
     updateReasonCharacterCount(reasonInput, characterCount);
-  });
-
-  submitButton.addEventListener("click", function () {
-    updateSignupLoginWarning(errorElement);
   });
 
   signupForm.addEventListener("submit", submitSignupForm);
