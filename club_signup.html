@@ -6,6 +6,7 @@
     <title>Club Sign Ups — Club Finder</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/auth-nav.js" defer></script>
+    <script src="js/signup.js" defer></script>
   </head>
 
   <body>
@@ -53,20 +54,21 @@
             <li>
               <span class="step-number">1</span>
               <div>
-                <strong>Choose a club</strong>
+                <strong>Sign in</strong>
                 <p>
-                  Select the club you want to join from the dropdown or search
-                  on the Explore Clubs page first.
+                  Sign in with your York University email so your identity can
+                  be included with the application.
                 </p>
               </div>
             </li>
             <li>
               <span class="step-number">2</span>
               <div>
-                <strong>Fill in your details</strong>
+                <strong>Choose a club and tell us why</strong>
                 <p>
-                  Enter your student info and tell the club a little about why
-                  you'd like to join.
+                  Select the club you want to join from the dropdown or search
+                  on the Explore Clubs page first, then briefly explain why you
+                  would like to join.
                 </p>
               </div>
             </li>
@@ -81,14 +83,6 @@
               </div>
             </li>
           </ol>
-
-          <div class="signup-note">
-            <img src="assets/info.png" alt="" class="info-icon" />
-            <span
-              >A valid <strong>@my.yorku.ca</strong> or
-              <strong>@yorku.ca</strong> email is required to sign up.</span
-            >
-          </div>
         </div>
 
         <div class="contact-form-wrapper">
@@ -112,7 +106,7 @@
 
             <!-- Club Information  -->
             <fieldset class="signup-fieldset">
-              <legend class="signup-legend">Club Information</legend>
+              <legend class="signup-legend">Club Application</legend>
 
               <div class="form-group">
                 <label for="club-name"
@@ -148,96 +142,28 @@
               </div>
 
               <div class="form-group">
-                <label for="club-category"
-                  >Club Category <span class="required">*</span></label
-                >
-                <select id="club-category" class="contact-select" required>
-                  <option value="" disabled selected>Select a category</option>
-                  <option value="Academic">Academic</option>
-                  <option value="Cultural">Cultural</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Technology">Technology</option>
-                  <option value="Arts">Arts</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="club-description">Club Description</label>
-                <textarea
-                  id="club-description"
-                  rows="4"
-                  placeholder="A brief description of the club (auto-fills when you select a club above)…"
+                <label for="club-category">Club Category</label>
+                <input
+                  type="text"
+                  id="club-category"
+                  placeholder="Select a club to view its category"
                   readonly
-                  class="signup-readonly"
-                ></textarea>
-              </div>
-            </fieldset>
-
-            <!-- Student Information -->
-            <fieldset class="signup-fieldset">
-              <legend class="signup-legend">Student Information</legend>
-
-              <div class="form-group">
-                <label for="student-name"
-                  >Student Name <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="student-name"
-                  placeholder="e.g. Jane Smith"
-                  required
                 />
               </div>
 
               <div class="form-group">
-                <label for="student-id"
-                  >Student ID <span class="required">*</span></label
-                >
-                <input
-                  type="text"
-                  id="student-id"
-                  placeholder="e.g. 220123456"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="student-email"
-                  >York University Email <span class="required">*</span></label
-                >
-                <input
-                  type="email"
-                  id="student-email"
-                  placeholder="name@my.yorku.ca"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="student-year"
-                  >Year of Study <span class="required">*</span></label
-                >
-                <select id="student-year" class="contact-select" required>
-                  <option value="" disabled selected>Select year</option>
-                  <option value="1">1st Year</option>
-                  <option value="2">2nd Year</option>
-                  <option value="3">3rd Year</option>
-                  <option value="4">4th Year</option>
-                  <option value="grad">Graduate Student</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="student-reason"
+                <label for="join-reason"
                   >Why do you want to join this club?
                   <span class="required">*</span></label
                 >
                 <textarea
-                  id="student-reason"
-                  rows="5"
-                  placeholder="Tell the club why you'd like to join and what you hope to contribute…"
+                  id="join-reason"
+                  rows="6"
+                  maxlength="250"
+                  placeholder="Explain why you would like to join this club and what interests you about it."
                   required
                 ></textarea>
+                <p id="join-reason-count" class="character-count">0 / 250</p>
               </div>
             </fieldset>
 
@@ -261,7 +187,6 @@
     <footer class="site-footer">
       <p>&copy; 2026 YorkU ClubConnect. Built for York University students.</p>
       <p><a href="contact.html">Contact the ClubConnect team</a></p>
-      <script src="js/signup.js"></script>
     </footer>
   </body>
 </html>
